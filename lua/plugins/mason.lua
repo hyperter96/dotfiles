@@ -1,0 +1,30 @@
+return {
+  {
+    "williamboman/mason.nvim",
+    optional = true,
+    opts = {
+      ensure_installed = {
+        "codelldb",
+        "clangd",
+        "clang-format",
+        "goimports",
+        "gofumpt",
+        "gomodifytags",
+        "impl",
+        "delve",
+        "markdownlint-cli2",
+        "markdown-toc",
+        "zls",
+        "js-debug-adapter",
+        "eslint-lsp",
+        "json-lsp",
+        "yaml-language-server",
+        "typescript-language-server",
+        "tailwindcss-language-server",
+        "ansible-lint",
+        "ltex-ls",
+        "hadolint",
+      },
+    },
+  },
+}
