@@ -42,34 +42,11 @@ return {
         "zig",
         "json5",
         "helm",
+        "lua",
+        "xml",
+        "json",
       })
     end,
   },
   { "IndianBoy42/tree-sitter-just", event = "BufRead justfile", opts = {} },
-  {
-    "https://github.com/Samonitari/tree-sitter-caddy",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      opts = function(_, opts)
-        local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-        parser_config.caddy = {
-          install_info = {
-            url = "https://github.com/Samonitari/tree-sitter-caddy",
-            files = { "src/parser.c", "src/scanner.c" },
-            branch = "master",
-          },
-          filetype = "caddy",
-        }
-
-        opts.ensure_installed = opts.ensure_installed or {}
-        vim.list_extend(opts.ensure_installed, { "caddy" })
-        vim.filetype.add({
-          pattern = {
-            ["Caddyfile"] = "caddy",
-          },
-        })
-      end,
-    },
-    event = "BufRead Caddyfile",
-  },
 }

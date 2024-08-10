@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 return {
   -- lsp servers
   {
@@ -16,8 +15,10 @@ return {
         },
       },
       setup = {
+        hls = function()
+          return true
+        end,
         tsserver = function()
-          -- disable tsserver
           return true
         end,
         vtsls = function(_, opts)
@@ -104,7 +105,7 @@ return {
         end,
       },
       servers = {
-        -- marksman = {},
+        neocmake = {},
         tsserver = {
           enabled = false,
         },
@@ -205,8 +206,18 @@ return {
             { "<leader>Gt", "<cmd>GoTestAdd<cr>", desc = "Add Test" },
             { "<leader>GA", "<cmd>GoTestAll<cr>", desc = "Add All Tests" },
             { "<leader>Ge", "<cmd>GoTestExp<cr>", desc = "Add Exported Tests" },
-            { "<leader>Gg", "<cmd>GoGenerate<cr>", desc = "Generate" },
             { "<leader>Gf", "<cmd>GoGenerate %<cr>", desc = "Generate File" },
+            { "<leader>Gaj", "<cmd>GoAddTag<cr>", desc = "Add json tags" },
+            { "<leader>Gam", "<cmd>GoAddTag mapstructure<cr>", desc = "Add mapstructure tags" },
+            { "<leader>Gae", "<cmd>GoAddTag env<cr>", desc = "Add env tags" },
+            { "<leader>Gay", "<cmd>GoAddTag yaml<cr>", desc = "Add YAML tags" },
+            { "<leader>GI", "<cmd>GoImplements<cr>", desc = "Find implementions of this method" },
+            { "<leader>Gb", "<cmd>GoBuild %<cr>", desc = "Go Build Args" },
+            { "<leader>Gc", "<cmd>GoCmt<cr>", desc = "Comment" },
+            { "<leader>Gg", "<cmd>GoGenerate<cr>", desc = "Generate" },
+            { "<leader>Gr", "<cmd>GoRun %<cr>", desc = "Go Run Args" },
+            { "<leader>GT", "<cmd>GoModTidy<cr>", desc = "Tidy" },
+            { "<leader>GM", "<cmd>GoMockGen<cr>", desc = "Generate Mocks" },
           },
           settings = {
             gopls = {
@@ -248,7 +259,15 @@ return {
         -- clangd
         clangd = {
           keys = {
-            { "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+            -- { "<leader>C", group = "C++", icon = { icon = "󰙲", color = "blue" } },
+            { "<leader>Ch", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+            { "<leader>Cr", "<cmd>CMakeRun<cr>", desc = "Run Selected Launchable Target" },
+            { "<leader>Cl", "<cmd>CMakeLaunchArgs<cr>", desc = "CMakeRun with Additional Argument" },
+            { "<leader>Cc", "<cmd>CMakeClean<cr>", desc = "Clean All Targets & Deps" },
+            { "<leader>Cq", "<cmd>CMakeClose<cr>", desc = "Close CMake Executor/Runner Window" },
+            { "<leader>Cb", "<cmd>CMakeBuild<cr>", desc = "Compile Targets with Pre-build System" },
+            { "<leader>Cg", "<cmd>CMakeGenerate<cr>", desc = "Generate Native Build System" },
+            { "<leader>Cd", "<cmd>CMakeDebug<cr>", desc = "Debug Selected Launchable Target" },
           },
           root_dir = function(fname)
             return require("lspconfig.util").root_pattern(
@@ -318,7 +337,14 @@ return {
             },
           },
         },
-        zls = {},
+        zls = {
+          keys = {
+            { "<leader>zr", "<cmd>Zig run<cr>", "Run Zig Current File" },
+            { "<leader>zb", "<cmd>Zig build<cr>", "Build Current Project" },
+            { "<leader>zc", "<cmd>Zig check<cr>", "Check All Current Project Files" },
+            { "<leader>zt", "<cmd>Zig task<cr>", "Run a build.zig Task" },
+          },
+        },
       },
     },
   },
@@ -347,6 +373,7 @@ return {
     opts = {
       linters_by_ft = {
         lua = { "selene", "luacheck" },
+        cmake = { "cmakelint" },
       },
       linters = {
         selene = {

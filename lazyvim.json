@@ -1,0 +1,31 @@
+{
+  "extras": [
+    "plugins.extras.lang.clangd",
+    "plugins.extras.lang.markdown",
+    "plugins.extras.lang.zig",
+    "plugins.extras.lang.rust",
+    "plugins.extras.lang.go",
+    "plugins.extras.lang.cmake",
+    "plugins.extras.lang.typescript",
+    "plugins.extras.util.bigfile",
+    "plugins.extras.util.hardtime",
+    "plugins.extras.util.lazygit",
+    "plugins.extras.util.octo",
+    "plugins.extras.util.chatGPT",
+    "plugins.extras.util.perfanno",
+    "plugins.extras.util.tmux",
+    "plugins.extras.util.firenvim",
+    "plugins.extras.util.markmap",
+    "plugins.extras.util.dadbod",
+    "plugins.extras.util.toggletasks",
+    "plugins.extras.util.rest",
+    "plugins.extras.util.ufo",
+    "plugins.extras.coding.compiler",
+    "plugins.extras.coding.spelunker",
+    "plugins.extras.coding.leetcode"
+  ],
+  "news": {
+    "NEWS.md": "6520"
+  },
+  "version": 6
+}

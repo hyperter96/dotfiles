@@ -48,7 +48,51 @@ return {
   },
   {
     "xiyaowong/transparent.nvim",
+    optional = true,
+    config = function()
+      require("transparent").setup({ -- Optional, you don't have to run setup.
+
+        groups = { -- table: default groups
+
+          "Normal",
+          "NormalNC",
+          "Comment",
+          "Constant",
+          "Special",
+          "Identifier",
+
+          "Statement",
+          "PreProc",
+          "Type",
+          "Underlined",
+          "Todo",
+          "String",
+          "Function",
+
+          "Conditional",
+          "Repeat",
+          "Operator",
+          "Structure",
+          "LineNr",
+          "NonText",
+
+          "SignColumn",
+          "CursorLineNr",
+          "EndOfBuffer",
+        },
+
+        extra_groups = {
+
+          "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
+
+          "NvimTreeNormal", --
+        }, -- table: additional groups that should be cleared
+
+        exclude_groups = {}, -- table: groups you don't want to clear
+      })
+    end,
   },
+  { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
@@ -248,4 +292,12 @@ return {
     keys = { { "<leader>tz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
   },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+  {
+    "b0o/incline.nvim",
+    config = function()
+      require("incline").setup()
+    end,
+    -- Optional: Lazy load Incline
+    event = "VeryLazy",
+  },
 }

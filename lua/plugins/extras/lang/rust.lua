@@ -124,7 +124,7 @@ return {
   },
   {
     "nvim-neotest/neotest",
-    optional = true,
+    optional = false,
     dependencies = {
       "rouge8/neotest-rust",
     },

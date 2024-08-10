@@ -9,6 +9,7 @@ return {
         {
           mode = { "n", "v" },
           { "<leader>G", group = "Go", icon = { icon = "󰟓 ", color = "blue" } },
+          { "<leader>Ga", group = "Add tags", icon = { icon = "󰟓 ", color = "blue" } },
         },
       },
     },
@@ -36,19 +37,19 @@ return {
     event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
-    keys = {
-      { "<leader>Gaj", "<cmd>GoAddTag<cr>", desc = "Add json tags" },
-      { "<leader>Gam", "<cmd>GoAddTag mapstructure<cr>", desc = "Add mapstructure tags" },
-      { "<leader>Gae", "<cmd>GoAddTag env<cr>", desc = "Add env tags" },
-      { "<leader>Gay", "<cmd>GoAddTag yaml<cr>", desc = "Add YAML tags" },
-      { "<leader>Gim", "<cmd>GoImplements<cr>", desc = "Find implementions of this method" },
-      { "<leader>Gb", "<cmd>GoBuild %<cr>", desc = "Go Build Args" },
-      { "<leader>Gc", "<cmd>GoCmt<cr>", desc = "Comment" },
-      { "<leader>Gg", "<cmd>GoGenerate<cr>", desc = "Generate" },
-      { "<leader>Gr", "<cmd>GoRun %<cr>", desc = "Go Run Args" },
-      { "<leader>GT", "<cmd>GoModTidy<cr>", desc = "Tidy" },
-      { "<leader>GM", "<cmd>GoMockGen<cr>", desc = "Generate Mocks" },
-    },
+    -- keys = {
+    --   { "<leader>Gaj", "<cmd>GoAddTag<cr>", desc = "Add json tags" },
+    --   { "<leader>Gam", "<cmd>GoAddTag mapstructure<cr>", desc = "Add mapstructure tags" },
+    --   { "<leader>Gae", "<cmd>GoAddTag env<cr>", desc = "Add env tags" },
+    --   { "<leader>Gay", "<cmd>GoAddTag yaml<cr>", desc = "Add YAML tags" },
+    --   { "<leader>Gim", "<cmd>GoImplements<cr>", desc = "Find implementions of this method" },
+    --   { "<leader>Gb", "<cmd>GoBuild %<cr>", desc = "Go Build Args" },
+    --   { "<leader>Gc", "<cmd>GoCmt<cr>", desc = "Comment" },
+    --   { "<leader>Gg", "<cmd>GoGenerate<cr>", desc = "Generate" },
+    --   { "<leader>Gr", "<cmd>GoRun %<cr>", desc = "Go Run Args" },
+    --   { "<leader>GT", "<cmd>GoModTidy<cr>", desc = "Tidy" },
+    --   { "<leader>GM", "<cmd>GoMockGen<cr>", desc = "Generate Mocks" },
+    -- },
   },
   {
     "leoluz/nvim-dap-go",
@@ -75,7 +76,7 @@ return {
   },
   {
     "nvim-neotest/neotest",
-    optional = true,
+    optional = false,
     dependencies = {
       "fredrikaverpil/neotest-golang",
     },

@@ -16,9 +16,11 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
+    ft = { "markdown" },
     keys = {
       {
         "<leader>mT",
@@ -35,16 +37,24 @@ return {
       {
         "<leader>ms",
         ft = "markdown",
-        "<cmd>MarkdownPreviewStop",
+        "<cmd>MarkdownPreviewStop<cr>",
         desc = "Markdown Preview Stop",
       },
     },
     config = function()
       vim.cmd([[do FileType]])
+      vim.cmd([[
+        function OpenMarkdownPreview (url)
+          let cmd = "google-chrome-stable --no-sandbox --disable-gpu --new-window " . shellescape(a:url) . " &"
+          silent call system(cmd)
+        endfunction
+      ]])
+      vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
     end,
   },
   {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     opts = {
       file_types = { "markdown", "norg", "rmd", "org" },
       code = {
@@ -226,5 +236,15 @@ return {
         -- autofold_depth = 1,
       },
     },
+  },
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup()
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
   },
 }

@@ -39,6 +39,11 @@ return {
     event = "User ColorSchemeLoad",
   },
   {
+    "cocopon/iceberg.vim",
+    lazy = false,
+    event = "User ColorSchemeLoad",
+  },
+  {
     "ribru17/bamboo.nvim",
     lazy = false,
     priority = 1000,
