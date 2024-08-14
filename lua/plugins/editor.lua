@@ -39,6 +39,9 @@ return {
     },
   },
   {
+    "junegunn/fzf.vim",
+  },
+  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     opts = {

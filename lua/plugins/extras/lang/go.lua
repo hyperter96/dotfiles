@@ -75,19 +75,97 @@ return {
     },
   },
   {
-    "nvim-neotest/neotest",
-    optional = false,
+    "neovim/nvim-lspconfig",
     dependencies = {
-      "fredrikaverpil/neotest-golang",
+      { "hrsh7th/cmp-nvim-lsp" },
     },
-    opts = {
-      adapters = {
-        ["neotest-golang"] = {
-          -- Here we can set options for neotest-golang, e.g.
-          -- go_test_args = { "-v", "-race", "-count=1", "-timeout=60s" },
-          dap_go_enabled = true, -- requires leoluz/nvim-dap-go
+    config = function()
+      local lsp_zero = require("lsp-zero")
+
+      -- lsp_attach is where you enable features that only work
+      -- if there is a language server active in the file
+      local lsp_attach = function(client, bufnr)
+        local opts = { buffer = bufnr }
+
+        vim.keymap.set("n", "<leader>Gi", "<cmd>GoInstallDeps<cr>", { desc = "Install Dependencies" })
+        vim.keymap.set("n", "<leader>Gt", "<cmd>GoTestAdd<cr>", { desc = "Add Test" })
+        vim.keymap.set("n", "<leader>GA", "<cmd>GoTestAll<cr>", { desc = "Add All Tests" })
+        vim.keymap.set("n", "<leader>Ge", "<cmd>GoTestExp<cr>", { desc = "Add Exported Tests" })
+        vim.keymap.set("n", "<leader>Gf", "<cmd>GoGenerate %<cr>", { desc = "Generate File" })
+        vim.keymap.set("n", "<leader>Gaj", "<cmd>GoAddTag<cr>", { desc = "Add json tags" })
+        vim.keymap.set("n", "<leader>Gam", "<cmd>GoAddTag mapstructure<cr>", { desc = "Add mapstructure tags" })
+        vim.keymap.set("n", "<leader>Gae", "<cmd>GoAddTag env<cr>", { desc = "Add env tags" })
+        vim.keymap.set("n", "<leader>Gay", "<cmd>GoAddTag yaml<cr>", { desc = "Add YAML tags" })
+        vim.keymap.set("n", "<leader>GI", "<cmd>GoImplements<cr>", { desc = "Find Implementations of this method" })
+        vim.keymap.set("n", "<leader>Gb", "<cmd>GoBuild %<cr>", { desc = "Go Build Args" })
+        vim.keymap.set("n", "<leader>Gc", "<cmd>GoCmt<cr>", { desc = "Comment" })
+        vim.keymap.set("n", "<leader>Gg", "<cmd>GoGenerate<cr>", { desc = "Generate" })
+        vim.keymap.set("n", "<leader>Gr", "<cmd>GoRun %<cr>", { desc = "Go Run Args" })
+        vim.keymap.set("n", "<leader>GT", "<cmd>GoModTidy<cr>", { desc = "Tidy" })
+        vim.keymap.set("n", "<leader>GM", "<cmd>GoMockGen<cr>", { desc = "Generate Mocks" })
+      end
+
+      lsp_zero.extend_lspconfig({
+        sign_text = true,
+        lsp_attach = lsp_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      -- These are just examples. Replace them with the language
+      -- servers you have installed in your system
+      require("lspconfig").gopls.setup({
+        on_attach = function(client, bufnr)
+          if not client.server_capabilities.semanticTokensProvider then
+            local semantic = client.config.capabilities.textDocument.semanticTokens
+            if semantic ~= nil then
+              client.server_capabilities.semanticTokensProvider = {
+                full = true,
+                legend = {
+                  tokenTypes = semantic.tokenTypes,
+                  tokenModifiers = semantic.tokenModifiers,
+                },
+                range = true,
+              }
+            end
+          end
+        end,
+        settings = {
+          gopls = {
+            gofumpt = true,
+            codelenses = {
+              gc_details = false,
+              generate = true,
+              regenerate_cgo = true,
+              run_govulncheck = true,
+              test = true,
+              tidy = true,
+              upgrade_dependency = true,
+              vendor = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            analyses = {
+              fieldalignment = true,
+              nilness = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            usePlaceholders = true,
+            completeUnimported = true,
+            staticcheck = true,
+            directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+            semanticTokens = true,
+          },
         },
-      },
-    },
+      })
+    end,
   },
 }

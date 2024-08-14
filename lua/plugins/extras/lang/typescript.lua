@@ -1,5 +1,19 @@
 return {
   {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts_extend = { "spec" },
+    opts = {
+      defaults = {},
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "<leader>T", group = "TypeScript", icon = { icon = "󰛦", color = "yellow" } },
+        },
+      },
+    },
+  },
+  {
     "echasnovski/mini.icons",
     opts = {
       file = {

@@ -18,38 +18,6 @@ return {
     ft = "zig",
   },
   {
-    "nvim-neotest/neotest",
-    optional = false,
-    dependencies = {
-      "lawrence-laz/neotest-zig", -- Installation
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-    },
-    opts = {
-      adapters = {
-        ["neotest-zig"] = {
-          dap = {
-            adapter = "lldb",
-          },
-        },
-      },
-    },
-    -- config = function()
-    --   require("neotest").setup({
-    --     log_level = vim.log.levels.TRACE,
-    --     adapters = {
-    --       -- Registration
-    --       require("neotest-zig")({
-    --         dap = {
-    --           adapter = "lldb",
-    --         },
-    --       }),
-    --     },
-    --   })
-    -- end,
-  },
-  {
     "NTBBloodbath/zig-tools.nvim",
     -- Load zig-tools.nvim only in Zig buffers
     ft = "zig",

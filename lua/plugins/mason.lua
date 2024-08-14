@@ -1,7 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
-    optional = true,
+    optional = false,
     opts = {
       ensure_installed = {
         "codelldb",
@@ -17,9 +17,11 @@ return {
         "markdownlint-cli2",
         "markdown-toc",
         "zls",
+        "texlab",
         "js-debug-adapter",
         "eslint-lsp",
         "json-lsp",
+        "prettier",
         "yaml-language-server",
         "typescript-language-server",
         "tailwindcss-language-server",

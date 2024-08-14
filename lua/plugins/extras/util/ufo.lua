@@ -2,20 +2,34 @@ return {
   {
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
-    -- config = function()
-    --   local capabilities = vim.lsp.protocol.make_client_capabilities()
-    --   capabilities.textDocument.foldingRange = {
-    --     dynamicRegistration = false,
-    --     lineFoldingOnly = true,
-    --   }
-    --   local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-    --   for _, ls in ipairs(language_servers) do
-    --     require("lspconfig")[ls].setup({
-    --       capabilities = capabilities,
-    --       -- you can add other fields for setting up lsp server in this table
-    --     })
-    --   end
-    --   require("ufo").setup()
-    -- end,
+    init = function()
+      vim.o.foldcolumn = "1"
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+    end,
+    config = function()
+      require("ufo").setup()
+
+      -- Using ufo provider need remap `zR` and `zM`.
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+      local lsp_zero = require("lsp-zero")
+
+      local lsp_capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          },
+        },
+      })
+
+      lsp_zero.extend_lspconfig({
+        capabilities = lsp_capabilities,
+      })
+    end,
   },
+  { "kevinhwang91/promise-async" },
 }

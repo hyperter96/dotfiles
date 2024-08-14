@@ -7,6 +7,8 @@
     "plugins.extras.lang.go",
     "plugins.extras.lang.cmake",
     "plugins.extras.lang.typescript",
+    "plugins.extras.lang.tex",
+    "plugins.extras.lang.haskell",
     "plugins.extras.util.bigfile",
     "plugins.extras.util.hardtime",
     "plugins.extras.util.lazygit",
@@ -20,6 +22,8 @@
     "plugins.extras.util.toggletasks",
     "plugins.extras.util.rest",
     "plugins.extras.util.ufo",
+    "plugins.extras.util.neorg",
+    "plugins.extras.coding.luasnip",
     "plugins.extras.coding.compiler",
     "plugins.extras.coding.spelunker",
     "plugins.extras.coding.leetcode"

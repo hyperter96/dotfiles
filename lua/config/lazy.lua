@@ -21,7 +21,6 @@ require("lazy").setup({
     { import = "plugins" },
 
     -- coding
-    { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.neogen" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -29,6 +28,7 @@ require("lazy").setup({
 
     -- editor
     { import = "lazyvim.plugins.extras.editor.leap" },
+    { "junegunn/fzf", dir = "~/.fzf", build = "./install --all", name = "fzf" },
     { import = "lazyvim.plugins.extras.editor.navic" },
     { import = "lazyvim.plugins.extras.editor.illuminate" },
     { import = "lazyvim.plugins.extras.editor.telescope" },

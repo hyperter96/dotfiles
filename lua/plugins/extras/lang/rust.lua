@@ -26,6 +26,26 @@ return {
         },
       },
     },
+    config = function()
+      local cmp = require("cmp")
+      local cmp_action = require("lsp-zero").cmp_action()
+      cmp.setup({
+        sources = {
+          { name = "nvim_lsp" },
+        },
+        snippet = {
+          expand = function(args)
+            -- You need Neovim v0.10 to use vim.snippet
+            vim.snippet.expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          -- enable supertab
+          ["<Tab>"] = cmp_action.luasnip_supertab(),
+          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+        }),
+      })
+    end,
     opts = function(_, opts)
       opts.sources = opts.sources or {}
       table.insert(opts.sources, { name = "crates" })
@@ -113,6 +133,17 @@ return {
       },
     },
     config = function(_, opts)
+      local lsp_zero = require("lsp-zero")
+
+      lsp_zero.extend_lspconfig({
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
+
+      vim.g.rustaceanvim = {
+        server = {
+          capabilities = lsp_zero.get_capabilities(),
+        },
+      }
       vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
       if vim.fn.executable("rust-analyzer") == 0 then
         LazyVim.error(
@@ -120,6 +151,15 @@ return {
           { title = "rustaceanvim" }
         )
       end
+      require("mason").setup({})
+      require("mason-lspconfig").setup({
+        handlers = {
+          function(server_name)
+            require("lspconfig")[server_name].setup({})
+          end,
+          rust_analyzer = lsp_zero.noop,
+        },
+      })
     end,
   },
   {

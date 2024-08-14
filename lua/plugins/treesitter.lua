@@ -8,6 +8,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
+        "bibtex",
         "cmake",
         "cpp",
         "rust",
@@ -45,7 +46,13 @@ return {
         "lua",
         "xml",
         "json",
+        "haskell",
       })
+      if type(opts.highlight.disable) == "table" then
+        vim.list_extend(opts.highlight.disable, { "latex" })
+      else
+        opts.highlight.disable = { "latex" }
+      end
     end,
   },
   { "IndianBoy42/tree-sitter-just", event = "BufRead justfile", opts = {} },
