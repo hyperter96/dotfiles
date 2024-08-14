@@ -4,6 +4,7 @@ return {
     optional = false,
     opts = {
       ensure_installed = {
+        "black",
         "codelldb",
         "clangd",
         "clang-format",
@@ -11,6 +12,8 @@ return {
         "cmakelint",
         "goimports",
         "gofumpt",
+        "pyright",
+        "debugpy",
         "gomodifytags",
         "impl",
         "delve",

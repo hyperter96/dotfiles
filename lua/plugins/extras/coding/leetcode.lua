@@ -10,7 +10,7 @@ return {
       spec = {
         {
           mode = { "n", "v" },
-          { "<leader>L", group = "Leetcode", icon = { icon = "", color = "green" } },
+          { "<localleader>L", group = "Leetcode", icon = { icon = "", color = "green" } },
         },
       },
     },
@@ -51,13 +51,13 @@ return {
       },
     },
     keys = {
-      { "<leader>Lm", "<cmd>Leet<cr>", desc = "Menu" },
-      { "<Leader>Lq", "<cmd>Leet exit<cr>", desc = "Exit Leetcode" },
-      { "<Leader>LL", "<cmd>Leet lang<cr>", desc = "Change the Language" },
-      { "<leader>Ly", "<cmd>Leet yank<cr>", desc = "Yank the current Question Solution" },
-      { "<leader>Lr", "<cmd>Leet run<cr>", desc = "Run currently Opened Question" },
-      { "<leader>Ls", "<cmd>Leet submit<cr>", desc = "Submit currently Opened Question" },
-      { "<leader>Ll", "<cmd>Leet list<cr>", desc = "Open a Problem List Picker" },
+      { "<localleader>Lm", "<cmd>Leet<cr>", desc = "Menu" },
+      { "<localleader>Lq", "<cmd>Leet exit<cr>", desc = "Exit Leetcode" },
+      { "<localleader>LL", "<cmd>Leet lang<cr>", desc = "Change the Language" },
+      { "<localleader>Ly", "<cmd>Leet yank<cr>", desc = "Yank the current Question Solution" },
+      { "<localleader>Lr", "<cmd>Leet run<cr>", desc = "Run currently Opened Question" },
+      { "<localleader>Ls", "<cmd>Leet submit<cr>", desc = "Submit currently Opened Question" },
+      { "<localleader>Ll", "<cmd>Leet list<cr>", desc = "Open a Problem List Picker" },
     },
   },
 }

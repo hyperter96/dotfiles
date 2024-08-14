@@ -8,7 +8,8 @@ return {
       spec = {
         {
           mode = { "n", "v" },
-          { "<leader>p", group = "Perfanno", icon = { icon = "", color = "orange" } },
+          { "<localleader>p", group = "Perfanno", icon = { icon = "", color = "orange" } },
+          { "<localleader>pl", group = "PerfLoad", icon = { icon = "", color = "orange" } },
         },
       },
     },
@@ -31,22 +32,22 @@ return {
       local keymap = vim.api.nvim_set_keymap
       local opts = { noremap = true, silent = true }
 
-      keymap("n", "<LEADER>plf", ":PerfLoadFlat<CR>", opts)
-      keymap("n", "<LEADER>plg", ":PerfLoadCallGraph<CR>", opts)
-      keymap("n", "<LEADER>plo", ":PerfLoadFlameGraph<CR>", opts)
+      keymap("n", "<localleader>plf", ":PerfLoadFlat<CR>", opts)
+      keymap("n", "<localleader>plg", ":PerfLoadCallGraph<CR>", opts)
+      keymap("n", "<localleader>plo", ":PerfLoadFlameGraph<CR>", opts)
 
-      keymap("n", "<LEADER>pe", ":PerfPickEvent<CR>", opts)
+      keymap("n", "<localleader>pe", ":PerfPickEvent<CR>", opts)
 
-      keymap("n", "<LEADER>pa", ":PerfAnnotate<CR>", opts)
-      keymap("n", "<LEADER>pf", ":PerfAnnotateFunction<CR>", opts)
-      keymap("v", "<LEADER>pa", ":PerfAnnotateSelection<CR>", opts)
+      keymap("n", "<localleader>pa", ":PerfAnnotate<CR>", opts)
+      keymap("n", "<localleader>pf", ":PerfAnnotateFunction<CR>", opts)
+      keymap("v", "<localleader>pa", ":PerfAnnotateSelection<CR>", opts)
 
-      keymap("n", "<LEADER>pt", ":PerfToggleAnnotations<CR>", opts)
+      keymap("n", "<localleader>pt", ":PerfToggleAnnotations<CR>", opts)
 
-      keymap("n", "<LEADER>ph", ":PerfHottestLines<CR>", opts)
-      keymap("n", "<LEADER>ps", ":PerfHottestSymbols<CR>", opts)
-      keymap("n", "<LEADER>pc", ":PerfHottestCallersFunction<CR>", opts)
-      keymap("v", "<LEADER>pc", ":PerfHottestCallersSelection<CR>", opts)
+      keymap("n", "<localleader>ph", ":PerfHottestLines<CR>", opts)
+      keymap("n", "<localleader>ps", ":PerfHottestSymbols<CR>", opts)
+      keymap("n", "<localleader>pc", ":PerfHottestCallersFunction<CR>", opts)
+      keymap("v", "<localleader>pc", ":PerfHottestCallersSelection<CR>", opts)
     end,
   },
 }

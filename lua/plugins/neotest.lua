@@ -23,6 +23,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "mrcjkb/neotest-haskell",
       "fredrikaverpil/neotest-golang",
+      "nvim-neotest/neotest-python", 
       "alfaix/neotest-gtest",
     },
     opts = {
@@ -46,6 +47,11 @@ return {
         },
         ["neotest-gtest"] = {},
         ["rustaceanvim.neotest"] = {},
+        ["neotest-python"] = {
+          -- Here you can specify the settings for the adapter, i.e.
+          runner = "pytest",
+          -- python = ".venv/bin/python",
+        },
       },
     },
     keys = {

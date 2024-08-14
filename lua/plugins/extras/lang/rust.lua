@@ -14,44 +14,6 @@ return {
     },
   },
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "Saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        opts = {
-          completion = {
-            cmp = { enabled = true },
-          },
-        },
-      },
-    },
-    config = function()
-      local cmp = require("cmp")
-      local cmp_action = require("lsp-zero").cmp_action()
-      cmp.setup({
-        sources = {
-          { name = "nvim_lsp" },
-        },
-        snippet = {
-          expand = function(args)
-            -- You need Neovim v0.10 to use vim.snippet
-            vim.snippet.expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          -- enable supertab
-          ["<Tab>"] = cmp_action.luasnip_supertab(),
-          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-        }),
-      })
-    end,
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, { name = "crates" })
-    end,
-  },
-  {
     "Saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     opts = {
@@ -84,13 +46,17 @@ return {
             vim.cmd.RustLsp("testables")
           end, { desc = "Rust Testables", buffer = bufnr })
           -- cargo expand
-          vim.keymap.set("n", "<leader>re", function()
+          vim.keymap.set("n", "<leader>rM", function()
             vim.cmd.RustLsp("expandMacros")
           end, { desc = "Expand Macros", buffer = bufnr })
+          -- explain errors
+          vim.keymap.set("n", "<leader>re", function ()
+            vim.cmd.RustLsp('explainError')
+          end, { desc = "Explain Errors", buffer = bufnr})
           -- hover
           vim.keymap.set("n", "<leader>rh", function()
             vim.cmd.RustLsp("hover Actions")
-          end, { desc = "Hover", buffer = bufnr })
+          end, { desc = "Hover Actions", buffer = bufnr })
           -- rebuild Macros
           vim.keymap.set("n", "<leader>rR", function()
             vim.cmd.RustLsp("rebuildProcMacros")
@@ -103,6 +69,10 @@ return {
           vim.keymap.set("n", "<leader>rD", function()
             vim.cmd.RustLsp("debuggables")
           end, { desc = "Rust Debuggables", buffer = bufnr })
+          -- render diagnostics
+          vim.keymap.set("n", "<leader>rd", function ()
+            vim.cmd.RustLsp('renderDiagnostic')
+          end, { desc = "Render Diagnostics", buffer = bufnr})
           -- open cargo
           vim.keymap.set("n", "<leader>rc", function()
             vim.cmd.RustLsp("openCargo")
@@ -161,17 +131,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "nvim-neotest/neotest",
-    optional = false,
-    dependencies = {
-      "rouge8/neotest-rust",
-    },
-    opts = {
-      adapters = {
-        ["neotest-rust"] = {},
-      },
-    },
   },
 }

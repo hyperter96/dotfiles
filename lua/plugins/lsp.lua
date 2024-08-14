@@ -40,7 +40,6 @@ return {
     },
     config = function()
       local lsp_zero = require("lsp-zero")
-      local util = require("lspconfig/util")
       -- lsp_attach is where you enable features that only work
       -- if there is a language server active in the file
       local lsp_attach = function(client, bufnr)
@@ -167,7 +166,7 @@ return {
                 unusedLocalExclude = { "_*" },
               },
               format = {
-								enable = false,
+								enable = true,
 								defaultConfig = {
 									indent_style = "space",
 									indent_size = "2",
@@ -474,6 +473,53 @@ return {
           },
         },
       })
+      
+      -- ruff
+      require("lspconfig").ruff.setup({
+        on_attach = function(client, _)
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end,
+        cmd_env = { RUFF_TRACE = "messages" },
+        init_options = {
+          settings = {
+            logLevel = "error",
+          },
+        },
+        keys = {
+          {
+            "<leader>co",
+            LazyVim.lsp.action["source.organizeImports"],
+            desc = "Organize Imports",
+          },
+        },
+      })
+
+      -- ruff_lsp
+      require("lspconfig").ruff_lsp.setup({
+        keys = {
+          {
+            "<leader>co",
+            LazyVim.lsp.action["source.organizeImports"],
+            desc = "Organize Imports",
+          },
+        },
+      })
+
+      -- pyright
+      require("lspconfig").pyright.setup({
+        settings = {
+          pyright = {
+            disableOrganizeImports = true, -- Using Ruff
+          },
+          python = {
+            analysis = {
+              ignore = { '*' }, -- Using Ruff
+              typeCheckingMode = 'off', -- Using mypy
+            },
+          },
+        }, 
+      })
 
       -- neocmake
       require("lspconfig").neocmake.setup({})
@@ -506,8 +552,18 @@ return {
     },
   },
   {
+  "neovim/nvim-lspconfig",
+  opts = function(_, opts)
+    local servers = { "pyright", "basedpyright", "ruff", "ruff_lsp", ruff, lsp }
+    for _, server in ipairs(servers) do
+      opts.servers[server] = opts.servers[server] or {}
+      opts.servers[server].enabled = server == lsp or server == ruff
+    end
+  end,
+},
+  {
     "stevearc/conform.nvim",
-    optional = true,
+    optional = false,
     opts = {
       formatters_by_ft = {
         ["javascript"] = { "dprint", { "prettierd", "prettier" } },
