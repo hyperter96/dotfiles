@@ -26,6 +26,7 @@
     "plugins.extras.util.neorg",
     "plugins.extras.util.garbage-day",
     "plugins.extras.util.kulala",
+    "plugins.extras.util.image",
     "plugins.extras.coding.luasnip",
     "plugins.extras.coding.compiler",
     "plugins.extras.coding.spelunker",

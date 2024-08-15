@@ -190,7 +190,7 @@ return {
                 offsetEncoding = { "utf-16" },
               },
               root_dir = function(fname)
-                return require("lspconfig.util").root_pattern(
+                return util.root_pattern(
                   "Makefile",
                   "configure.ac",
                   "configure.in",
@@ -488,7 +488,7 @@ return {
         },
         keys = {
           {
-            "<leader>co",
+            "<leader>po",
             LazyVim.lsp.action["source.organizeImports"],
             desc = "Organize Imports",
           },
@@ -499,7 +499,7 @@ return {
       require("lspconfig").ruff_lsp.setup({
         keys = {
           {
-            "<leader>co",
+            "<leader>po",
             LazyVim.lsp.action["source.organizeImports"],
             desc = "Organize Imports",
           },
