@@ -9,6 +9,7 @@ return {
   },
   {
     "rest-nvim/rest.nvim",
+    optional = true,
     ft = "http",
     dependencies = { "luarocks.nvim" },
     config = function()

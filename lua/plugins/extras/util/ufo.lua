@@ -1,7 +1,8 @@
 return {
   {
     "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
+    optional = false,
+    dependencies = "kevinhwang91/promise-async",
     init = function()
       vim.o.foldcolumn = "1"
       vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value

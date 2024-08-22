@@ -41,3 +41,30 @@ vim.api.nvim_set_keymap("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", { norem
 -- Using ufo provider need remap `zR` and `zM`.
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+local wk = require("which-key")
+wk.add({
+  mode = { "v" },
+  { "<leader>S", group = "Silicon", icon = { icon = "󰹑" } },
+  {
+    "<leader>Sc",
+    function()
+      require("nvim-silicon").clip()
+    end,
+    desc = "Copy code screenshot to clipboard",
+  },
+  {
+    "<leader>Sf",
+    function()
+      require("nvim-silicon").file()
+    end,
+    desc = "Save code screenshot as file",
+  },
+  {
+    "<leader>Ss",
+    function()
+      require("nvim-silicon").shoot()
+    end,
+    desc = "Create code screenshot",
+  },
+})

@@ -46,7 +46,7 @@ return {
 
       keymap("n", "<localleader>ph", ":PerfHottestLines<CR>", opts)
       keymap("n", "<localleader>ps", ":PerfHottestSymbols<CR>", opts)
-      keymap("n", "<localleader>pc", ":PerfHottestCallersFunction<CR>", opts)
+      keymap("n", "<localleader>pn", ":PerfHottestCallersFunction<CR>", opts)
       keymap("v", "<localleader>pc", ":PerfHottestCallersSelection<CR>", opts)
     end,
   },

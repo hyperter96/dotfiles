@@ -22,6 +22,8 @@ return {
         "gitignore",
         "glsl",
         "go",
+        "gotmpl",
+        "yaml",
         "gomod",
         "gowork",
         "gosum",
@@ -38,6 +40,7 @@ return {
         "php",
         "python",
         "requirements",
+        "latex",
         "scss",
         "sql",
         "svelte",
@@ -49,6 +52,10 @@ return {
         "lua",
         "xml",
         "json",
+        "wit",
+        "proto",
+        "javascript",
+        "typescript",
         "haskell",
       })
       if type(opts.highlight.disable) == "table" then

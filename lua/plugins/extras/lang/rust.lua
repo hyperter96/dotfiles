@@ -24,6 +24,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
+    dependencies = "ray-x/navigator.lua",
     version = "^4", -- Recommended
     ft = { "rust" },
     opts = {
@@ -36,7 +37,12 @@ return {
         },
       },
       server = {
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
+          require('navigator.lspclient.mapping').setup({client=client, bufnr=bufnr}) -- setup navigator keymaps here,
+
+          require("navigator.dochighlight").documentHighlight(bufnr)
+          require('navigator.codeAction').code_action_prompt(bufnr)
+
           -- cargo run
           vim.keymap.set("n", "<leader>rr", function()
             vim.cmd.RustLsp("runnables")
@@ -55,7 +61,7 @@ return {
           end, { desc = "Explain Errors", buffer = bufnr})
           -- hover
           vim.keymap.set("n", "<leader>rh", function()
-            vim.cmd.RustLsp("hover Actions")
+            vim.cmd.RustLsp{"hover","actions"}
           end, { desc = "Hover Actions", buffer = bufnr })
           -- rebuild Macros
           vim.keymap.set("n", "<leader>rR", function()

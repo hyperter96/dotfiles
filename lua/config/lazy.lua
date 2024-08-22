@@ -41,6 +41,68 @@ require("lazy").setup({
 
     -- lsp
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    {
+      "stevearc/conform.nvim",
+      optional = false,
+      opts = {
+        formatters_by_ft = {
+          ["python"] = { "black" },
+          lua = { "stylua" },
+          javascript = { "dprint", { "prettierd", "prettier" } },
+          javascriptreact = { "dprint" },
+          typescript = { "dprint", { "prettierd", "prettier" } },
+          typescriptreact = { "dprint" },
+          go = { "goimports", "gofumpt", "goimports-reviser" },
+          less = { { "prettierd", "prettier" } },
+          html = { { "prettierd", "prettier" } },
+          json = { { "prettierd", "prettier" } },
+          jsonc = { { "prettierd", "prettier" } },
+          yaml = { { "prettierd", "prettier" } },
+          markdown = { { "prettierd", "prettier" } },
+          ["c"] = { "clang_format" },
+          ["cpp"] = { "clang_format" },
+          ["c++"] = { "clang_format" },
+          rust = { "rustfmt"},
+        },
+        formatters = {
+          dprint = {
+            condition = function(_, ctx)
+              return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
+            end,
+          },
+        },
+      },
+    },
+    {
+      "mfussenegger/nvim-lint",
+      opts = {
+        linters_by_ft = {
+          lua = { "selene", "luacheck" },
+          cmake = { "cmakelint" },
+          proto = { "protolint"},
+        },
+        linters = {
+          selene = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ "selene.toml" }, { path = root, upward = true })[1]
+            end,
+          },
+          luacheck = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ ".luacheckrc" }, { path = root, upward = true })[1]
+            end,
+          },
+        },
+      },
+    },
 
     -- lang
     { import = "lazyvim.plugins.extras.lang.ansible" },

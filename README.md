@@ -4,7 +4,7 @@
 
 - Programming Languages: Go, Rust, C++, Zig
 - System Management: Bigfile, perfanno
-- Artificial Intelligence: ChatGPT
+- Artificial Intelligence: Ollama
 - Colour Theme Picker
 - Leetcode
 - DB Connection

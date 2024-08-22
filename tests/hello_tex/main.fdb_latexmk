@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1723566161 "main.tex" "main.pdf" "main" 1723566161
+["pdflatex"] 1723823606 "main.tex" "main.pdf" "main" 1723823606
   "/etc/texmf/web2c/texmf.cnf" 1718860296 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -27,9 +27,9 @@
   "/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1642022539 29921 f0f4f870357ebfb8fe58ed9ed4ee9b92 ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1723543641 4379155 98693266ff65f58d9f98aff394de12d2 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1723551175 2800503 d0b8de50b8e16bb3d9ce8068959ed928 ""
-  "main.aux" 1723566161 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1723686296 4234294 61dbbe4867bd229298f99ee3e5498729 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1723686308 1405647 355db294a92d85f0661a44e7d8050310 ""
+  "main.aux" 1723823606 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "main.tex" 1723566160 175 b7601d52908457ae6037157ccf083378 ""
   (generated)
   "main.aux"

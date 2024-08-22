@@ -153,6 +153,7 @@ return {
   },
   {
     "folke/noice.nvim",
+    optional = true,
     opts = function(_, opts)
       opts.debug = false
       opts.routes = opts.routes or {}
@@ -277,7 +278,29 @@ return {
     end,
   },
   { "MunifTanjim/nui.nvim", lazy = true },
-  { "folke/noice.nvim", enabled = true },
+  { 
+    "folke/noice.nvim",
+    optional = false,
+    event = "VeryLazy",
+    opts = {
+      lsp = {
+        hover = {
+          enabled = true,
+        },
+        signature = {
+          enabled = false,
+        },
+      },
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+  },
 
   "folke/twilight.nvim",
   {
@@ -304,8 +327,18 @@ return {
   },
   {
     'nvimdev/lspsaga.nvim',
+    optional = false,
     config = function()
-        require('lspsaga').setup({})
+      require('lspsaga').setup({})
+      vim.keymap.set('n', '<leader>ld', '<cmd>Lspsaga hover_doc<cr>', {desc = "Hover Declaration"})
+      vim.keymap.set('n', '<leader>lp', '<cmd>Lspsaga peek_definition<cr>', { desc = "Invoke Definition"})
+      vim.keymap.set('n', '<leader>ly', '<cmd>Lspsaga peek_type_definition<cr>', {desc = "Invoke Type Definition"})
+      vim.keymap.set('n', '<leader>lg', '<cmd>Lspsaga goto_definition<cr>', { desc = "Goto Definition"})
+      vim.keymap.set('n', '<leader>lt', '<cmd>Lspsaga goto_type_definition<cr>', {desc = "Goto Type Definition"})
+      vim.keymap.set('n', '<leader>li', '<cmd>Lspsaga incoming_calls<cr>', {desc = "Incoming Calls"})
+      vim.keymap.set('n', '<leader>lo', '<cmd>Lspsaga outgoing_calls<cr>', {desc = "Outgoing Calls"})
+      vim.keymap.set('n', '<leader>lf', '<cmd>Lspsaga finder<cr>', {desc = "Show References & Implementations"})
+      -- vim.keymap.set('n', '<leader>ls', '<cmd>Lspsaga outline<cr>', {desc = "Toggle the Outline by Sidebar"})
     end,
     dependencies = {
         'nvim-treesitter/nvim-treesitter', -- optional
@@ -339,4 +372,30 @@ return {
     build = 'make',
     optional = true,
   },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+    opts = {},
+  },
+  {
+    "echasnovski/mini.pairs",
+    enabled = false,
+  },
+  { 
+    'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup({
+        texthl = "SmoothCursorOrange",
+      })
+    end
+  },
+  {
+    "karb94/neoscroll.nvim",
+    config = function ()
+      require('neoscroll').setup({
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'},
+      })
+    end
+  }
 }

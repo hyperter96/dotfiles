@@ -10,16 +10,17 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nightfox",
+      -- colorscheme = "nightfox",
+      colorscheme = "iceberg",
     },
   },
   {
     "EdenEast/nightfox.nvim",
     lazy = false,
     event = "User ColorSchemeLoad",
-    config = function()
-      require("nightfox").load()
-    end,
+    -- config = function()
+    --   require("nightfox").load()
+    -- end,
   },
   {
     "folke/tokyonight.nvim",
@@ -88,7 +89,7 @@ return {
         navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
         neotree = true,
-        noice = true,
+        noice = false,
         notify = true,
         semantic_tokens = true,
         telescope = true,
