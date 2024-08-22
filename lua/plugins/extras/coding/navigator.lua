@@ -98,7 +98,7 @@ return {
               vim.lsp.buf.workspace_symbol(w)
             end,
           },
-          disable_lsp = {'ruff', 'ruff_lsp', 'pyright', 'rust_analyzer'},
+          disable_lsp = {'denols', 'ruff', 'ruff_lsp', 'pyright', 'rust_analyzer'},
           lua_ls = {
             settings = {
               Lua = {
@@ -337,9 +337,9 @@ return {
           
           tsserver = {
             root_dir = function(...)
-              return util.root_pattern(".git")(...)
+              return util.root_pattern(".git", "package.json", "jsconfig.json", "tsconfig.json")(...)
             end,
-            single_file_support = false,
+            single_file_support = true,
             settings = {
               typescript = {
                 inlayHints = {

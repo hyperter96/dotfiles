@@ -13,16 +13,6 @@ vim.keymap.del("n", "<leader>L")
 -- switch the themes
 vim.keymap.set("n", "<c-t>", "<cmd>Telescope themes<cr>")
 
-vim.keymap.set("i", "<tab>", function()
-  if require("tabnine.keymaps").has_suggestion() then
-    return require("tabnine.keymaps").accept_suggestion()
-  elseif require("luasnip").jumpable(1) then
-    return require("luasnip").jump(1)
-  else
-    return "<tab>"
-  end
-end, { expr = true })
-
 -- Open compiler
 vim.api.nvim_set_keymap("n", "<F6>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
 

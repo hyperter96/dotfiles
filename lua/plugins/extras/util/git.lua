@@ -17,4 +17,12 @@ return {
       require("telescope").load_extension("lazygit")
     end,
   },
+  {
+    '2kabhishek/co-author.nvim',
+    dependencies = {
+        'stevearc/dressing.nvim',
+        'nvim-telescope/telescope.nvim',
+    },
+    cmd = {'CoAuthor'},
+  },
 }

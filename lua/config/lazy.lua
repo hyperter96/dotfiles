@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    { "codota/tabnine-nvim", build = "./dl_binaries.sh" },
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     { import = "plugins" },
 

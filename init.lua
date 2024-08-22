@@ -8,17 +8,16 @@ require("telescope").setup({
     },
   },
 })
--- load tabnine
-require("tabnine").setup({
-  disable_auto_comment = true,
-  accept_keymap = "<Tab>",
-  dismiss_keymap = "<C-]>",
-  debounce_ms = 800,
-  suggestion_color = { gui = "#808080", cterm = 244 },
-  exclude_filetypes = { "TelescopePrompt", "NvimTree" },
-  log_file_path = nil, -- absolute path to Tabnine log file
-  ignore_certificate_errors = false,
-})
+
+-- lsp tsserver & deno
+local util = require("lspconfig.util")
+if LazyVim.lsp.get_config("denols") and LazyVim.lsp.get_config("tsserver") then
+  local is_deno = util.root_pattern("deno.json", "deno.jsonc")
+  LazyVim.lsp.disable("tsserver", is_deno)
+  LazyVim.lsp.disable("denols", function(root_dir)
+    return not is_deno(root_dir)
+  end)
+end
 
 local highlight = {
   "RainbowRed",
