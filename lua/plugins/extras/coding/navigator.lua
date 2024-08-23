@@ -98,7 +98,7 @@ return {
               vim.lsp.buf.workspace_symbol(w)
             end,
           },
-          disable_lsp = {'denols', 'ruff', 'ruff_lsp', 'pyright', 'rust_analyzer'},
+          disable_lsp = {'denols', 'rust_analyzer'},
           lua_ls = {
             settings = {
               Lua = {
@@ -429,7 +429,7 @@ return {
             },
           },
           
-          servers = {'cmake', 'ltex'},
+          servers = {'cmake', 'ltex', 'ruff', 'ruff_lsp', 'autotools_ls', 'pyright'},
         },
       })
       -- vim.keymap.set("n", "<leader>ls", "<cmd>LspSymbols<cr>", { desc = "Toggle the Outline by Sidebar" })
