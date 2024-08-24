@@ -19,6 +19,11 @@
 <li>
     <a href="https://go.dev/dl/">Go Download Page</a>
 </li>
+Rewrite go env if you wanna switch GOPROXY:
+<pre>
+$ go env -w GO111MODULE=on
+$ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
+</pre>
 </details>
 
 <details>
@@ -34,11 +39,31 @@ $ apt install python3.12
 // Install pip
 $ curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
 </pre>
+If you wanna install packages with mirrors:
+<pre>
+$ cat ~/.pip/pip.conf
+[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+[install]
+trusted-host = http://mirrors.aliyun.com
+</pre>
 </details>
 
 <details>
 <summary>Rust</summary>
 <pre>$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</pre>
+If you wanna install packages with mirrors:
+<pre>
+$ cat ~/.cargo/config.toml
+[source.crates-io]
+replace-with = 'aliyun'
+
+[source.aliyun]
+registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
+
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+</pre>
 </details>
 
 <details>

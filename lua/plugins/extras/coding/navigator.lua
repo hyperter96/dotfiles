@@ -83,11 +83,12 @@ return {
           { key = '<Leader>lb', func = require('navigator.treesitter').buf_ts, desc = 'Show Treesitter Symbols' },
           { key = '<leader>la', func = require('navigator.reference').async_ref, desc = 'Show References' },
           { key = '<leader>le', func = require('navigator.hierarchy').calltree, desc = 'Calltree' },
+          { key = '<leader>lp', func = require('navigator.definition').definition_preview, desc = 'Definition Preview'}
           
         },
         lsp = {
           hover = {
-            enable = false,
+            enable = true,
             go = function()
               local w = vim.fn.expand('<cWORD>')
               vim.cmd('GoDoc ' .. w)
