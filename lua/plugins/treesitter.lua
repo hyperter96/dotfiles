@@ -57,6 +57,7 @@ return {
         "javascript",
         "typescript",
         "haskell",
+        "java",
       })
       if type(opts.highlight.disable) == "table" then
         vim.list_extend(opts.highlight.disable, { "latex" })

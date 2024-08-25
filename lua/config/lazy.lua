@@ -35,13 +35,11 @@ require("lazy").setup({
     -- formatting
     { import = "lazyvim.plugins.extras.formatting.prettier" },
 
-    -- dap
-    { import = "lazyvim.plugins.extras.dap.core" },
-
     -- lsp
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     {
       "stevearc/conform.nvim",
+      event = { "BufReadPre", "BufNewFile" },
       optional = false,
       opts = {
         formatters_by_ft = {
@@ -53,6 +51,8 @@ require("lazy").setup({
           typescriptreact = { "dprint" },
           go = { "goimports", "gofumpt", "goimports-reviser" },
           less = { { "prettierd", "prettier" } },
+          toml = { "taplo" },
+          java = { "google-java-format" },
           html = { { "prettierd", "prettier" } },
           json = { { "prettierd", "prettier" } },
           jsonc = { { "prettierd", "prettier" } },
@@ -61,7 +61,8 @@ require("lazy").setup({
           ["c"] = { "clang_format" },
           ["cpp"] = { "clang_format" },
           ["c++"] = { "clang_format" },
-          rust = { "rustfmt"},
+          rust = { "rustfmt" },
+          xml = { "xmllint" },
         },
         formatters = {
           dprint = {

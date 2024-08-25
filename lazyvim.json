@@ -10,6 +10,7 @@
     "plugins.extras.lang.tex",
     "plugins.extras.lang.haskell",
     "plugins.extras.lang.python",
+    "plugins.extras.lang.java",
     "plugins.extras.util.bigfile",
     "plugins.extras.util.hardtime",
     "plugins.extras.util.git",

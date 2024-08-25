@@ -46,52 +46,6 @@ return {
       })
     end,
   },
-  {
-    "xiyaowong/transparent.nvim",
-    optional = true,
-    config = function()
-      require("transparent").setup({ -- Optional, you don't have to run setup.
-
-        groups = { -- table: default groups
-
-          "Normal",
-          "NormalNC",
-          "Comment",
-          "Constant",
-          "Special",
-          "Identifier",
-
-          "Statement",
-          "PreProc",
-          "Type",
-          "Underlined",
-          "Todo",
-          "String",
-          "Function",
-
-          "Conditional",
-          "Repeat",
-          "Operator",
-          "Structure",
-          "LineNr",
-          "NonText",
-
-          "SignColumn",
-          "CursorLineNr",
-          "EndOfBuffer",
-        },
-
-        extra_groups = {
-
-          "NormalFloat", -- plugins which have float panel such as Lazy, Mason, LspInfo
-
-          "NvimTreeNormal", --
-        }, -- table: additional groups that should be cleared
-
-        exclude_groups = {}, -- table: groups you don't want to clear
-      })
-    end,
-  },
   { "akinsho/toggleterm.nvim", version = "*", config = true },
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -304,7 +258,7 @@ return {
     opts = {
       lsp = {
         hover = {
-          enabled = true,
+          enabled = false,
         },
         signature = {
           enabled = false,
@@ -363,24 +317,6 @@ return {
         'nvim-treesitter/nvim-treesitter', -- optional
         'nvim-tree/nvim-web-devicons',     -- optional
     }
-  },
-  { 
-    "rcarriga/nvim-dap-ui", 
-    dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
-    config = function()
-      local dap = require("dap")
-      local dapui = require("dapui")
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
-    end
   },
   {
     'topaxi/gh-actions.nvim',

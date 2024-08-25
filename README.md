@@ -14,7 +14,7 @@
 
 ### Programming Languages
 
-<details>
+<details open>
 <summary>Go</summary>
 <li>
     <a href="https://go.dev/dl/">Go Download Page</a>
@@ -26,7 +26,37 @@ $ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct
 </pre>
 </details>
 
-<details>
+<details open>
+<summary>Java</summary>
+Install Java with the following:
+<pre>
+$ sudo apt install openjdk-21-jdk -y
+</pre>
+<li>
+  <a href="https://maven.apache.org/download.cgi">Maven Download Page</a>
+</li>
+</details>
+
+After Maven is installed, add the mirror if you like,
+<pre>
+$ vi ~/.maven/conf/settings.xml
+</pre>
+
+with the following settings edited,
+```xml
+<settings>
+    <mirrors>
+        <mirror>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <mirrorOf>central</mirrorOf>
+            <url>https://maven.aliyun.com/repository/central</url>
+        </mirror>
+    </mirrors>
+</settings>
+```
+
+<details open>
 <summary>Python 3.12</summary>
 <pre>
 // Install Python
@@ -49,7 +79,7 @@ trusted-host = http://mirrors.aliyun.com
 </pre>
 </details>
 
-<details>
+<details open>
 <summary>Rust</summary>
 <pre>$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</pre>
 If you wanna install packages with mirrors:
@@ -66,7 +96,7 @@ registry = "git://mirrors.ustc.edu.cn/crates.io-index"
 </pre>
 </details>
 
-<details>
+<details open>
 <summary>Lua</summary>
 <li>
     Download LuaBinaries: <a href="https://sourceforge.net/projects/luabinaries/">LuaBinaries Download Page</a>
@@ -182,6 +212,8 @@ Install `nvm` package manager & node.js:
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 $ nvm install 21
 </pre>
+After finishing installed, config the npm mirror if you like,
+<pre>$ npm config set registry http://mirrors.cloud.tencent.com/npm/</pre>
 </details>
 
 <details>
