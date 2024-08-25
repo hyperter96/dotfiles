@@ -99,7 +99,7 @@ return {
               vim.lsp.buf.workspace_symbol(w)
             end,
           },
-          disable_lsp = {'denols', 'rust_analyzer'},
+          disable_lsp = {'denols', 'rust_analyzer', 'jdtls'},
           lua_ls = {
             settings = {
               Lua = {

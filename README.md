@@ -2,7 +2,7 @@
 
 ## Features
 
-- Programming Languages: Go, Rust, C++, Zig
+- Programming Languages: Go, Rust, Haskell, Python, Java, Typescript, C++, Zig
 - System Management: Bigfile, perfanno
 - Artificial Intelligence: Ollama
 - Colour Theme Picker
@@ -125,8 +125,19 @@ $ make
 $ make install
 </pre>
 </li>
-<li> Install LuaRocks
-<pre>$ sudo apt install luarocks</pre>
+<li> Install LuaRocks & Dependencies
+<pre>
+$ sudo apt install luarocks
+$ luarocks install lua-curl
+$ luarocks install luafilesystem
+$ luarocks install say
+$ luarocks install luarocks-build-treesitter-paser
+$ luarocks install luassert
+$ luarocks install magick
+$ luarocks install mimetypes
+$ luarocks install nvim-nio
+$ luarocks install xml2lua
+</pre>
   </li>
 </details>
 

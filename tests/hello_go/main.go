@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"github.com/BooleanCat/option"
 )
 
 type Person struct {
@@ -19,12 +21,21 @@ func (p *Person) play(item string) {
 	fmt.Printf("%s is playing %s\n", p.Name, item)
 }
 
+func FindPerson(p option.Option[*Person]) string {
+	return p.UnwrapOrElse(func() *Person {
+		return &Person{Name: "Foo"}
+	}).Name
+}
+
 func main() {
 	fmt.Println("hello world")
 	for _, item := range []int{1, 2} {
 		fmt.Println(item)
 	}
-	p1 := Person{Name: "Peter", Id: 1}
+	p1 := &Person{Name: "Peter", Id: 1}
 	// p2 := Person{name: "Alex", id: 2}
 	p1.eat("stuff")
+	// var p2 *Person
+	fmt.Println(FindPerson(option.Some(p1)))
+	fmt.Println(FindPerson(option.None[*Person]()))
 }

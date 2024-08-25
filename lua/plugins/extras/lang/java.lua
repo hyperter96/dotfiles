@@ -291,6 +291,7 @@ return {
                 { "<leader>js", require("jdtls").super_implementation, desc = "Goto Super" },
                 { "<leader>jS", require("jdtls.tests").goto_subjects, desc = "Goto Subjects" },
                 { "<leader>jo", require("jdtls").organize_imports, desc = "Organize Imports" },
+                { "<leader>jc", "<cmd>JdtCompile<cr>", desc = "Compile Current Project"},
               },
             })
             wk.add({

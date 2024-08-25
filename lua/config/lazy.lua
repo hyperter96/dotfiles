@@ -49,7 +49,7 @@ require("lazy").setup({
           javascriptreact = { "dprint" },
           typescript = { "dprint", { "prettierd", "prettier" } },
           typescriptreact = { "dprint" },
-          go = { "goimports", "gofumpt", "goimports-reviser" },
+          go = { "gofumpt" },
           less = { { "prettierd", "prettier" } },
           toml = { "taplo" },
           java = { "google-java-format" },
@@ -120,9 +120,6 @@ require("lazy").setup({
 
     -- UI
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
-
-    -- util
-    { import = "lazyvim.plugins.extras.util.project" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

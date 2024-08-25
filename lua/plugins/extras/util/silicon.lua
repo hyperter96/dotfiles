@@ -117,5 +117,8 @@ return {
         return "./" .. os.date("!%Y-%m-%dT%H-%M-%SZ") .. "_code.png"
       end,
     },
+    config = function ()
+      vim.api.nvim_set_keymap("v", "<F3>", "<cmd>Silicon<cr>", { noremap = true, silent = true })
+    end
   },
 }
