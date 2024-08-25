@@ -73,6 +73,10 @@ return {
         hls = function()
           return true
         end,
+        jdtls = function()
+        -- this will disable LazyVim from setting up jdtls automatically
+          return true
+        end,
         tsserver = function()
           return true
         end,
@@ -92,6 +96,7 @@ return {
         tsserver = {
           enabled = false,
         },
+        jdtls = {},
         vtsls = {
           -- explicitly add default filetypes, so that we can extend
           -- them in related extras
