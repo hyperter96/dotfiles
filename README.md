@@ -143,6 +143,20 @@ $ luarocks install xml2lua
   </li>
 </details>
 
+<details open>
+<summary>Vue</summary>
+In order to use Volar, please add the following to the file:
+<pre>
+// tsconfig.json
+{
+  "compilerOptions": {
+    // ...
+    "types": ["element-plus/global"]
+  }
+}
+</pre>
+</details>
+
 ### Tools
 
 
