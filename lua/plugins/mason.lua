@@ -12,6 +12,7 @@ return {
         "cmakelint",
         "goimports",
         "gofumpt",
+        "gopls",
         "pyright",
         "debugpy",
         "gomodifytags",
