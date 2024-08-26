@@ -1,5 +1,5 @@
 local util = require("lspconfig.util")
-
+local lspconfig = require("lspconfig")
 local root_files = {
   ".clangd",
   ".clang-tidy",
@@ -37,25 +37,22 @@ return {
       { "hrsh7th/cmp-nvim-lsp" },
     },
     config = function()
-        local lsp_zero = require("lsp-zero")
-        -- lsp_attach is where you enable features that only work
-        -- if there is a language server active in the file
-        local lsp_attach = function(client, bufnr)
-          local opts = { buffer = bufnr }
+      local lsp_zero = require("lsp-zero")
+      -- lsp_attach is where you enable features that only work
+      -- if there is a language server active in the file
+      local lsp_attach = function(client, bufnr)
+        local opts = { buffer = bufnr }
 
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingRangeProvider = false
+        lsp_zero.default_keymaps({ buffer = bufnr })
+      end
 
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentFormattingRangeProvider = false
-          lsp_zero.default_keymaps({buffer = bufnr})
-
-        end
-
-        lsp_zero.extend_lspconfig({
-          sign_text = true,
-          lsp_attach = lsp_attach,
-          capabilities = require("cmp_nvim_lsp").default_capabilities(),
-        })
-     
+      lsp_zero.extend_lspconfig({
+        sign_text = true,
+        lsp_attach = lsp_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      })
     end,
     opts = {
       inlay_hints = {
@@ -74,7 +71,7 @@ return {
           return true
         end,
         jdtls = function()
-        -- this will disable LazyVim from setting up jdtls automatically
+          -- this will disable LazyVim from setting up jdtls automatically
           return true
         end,
         tsserver = function()
@@ -88,6 +85,13 @@ return {
       },
     },
   },
+  recommended = function()
+    return LazyVim.extras.wants({
+      ft = "vue",
+      root = { "vue.config.js" },
+    })
+  end,
+  
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -95,6 +99,13 @@ return {
       servers = {
         tsserver = {
           enabled = false,
+        },
+        volar = {
+          init_options = {
+            vue = {
+              hybridMode = true,
+            },
+          },
         },
         jdtls = {},
         vtsls = {
@@ -250,6 +261,21 @@ return {
         end,
       },
     },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function(_, opts)
+      table.insert(opts.servers.vtsls.filetypes, "vue")
+      LazyVim.extend(opts.servers.vtsls, "settings.vtsls.tsserver.globalPlugins", {
+        {
+          name = "@vue/typescript-plugin",
+          location = LazyVim.get_pkg_path("vue-language-server", "/node_modules/@vue/language-server"),
+          languages = { "vue" },
+          configNamespace = "typescript",
+          enableForWorkspaceTypeScriptVersions = true,
+        },
+      })
+    end,
   },
   { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
   {

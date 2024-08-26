@@ -1,5 +1,5 @@
 local util = require("lspconfig.util")
-
+local lspconfig = require("lspconfig")
 local root_files = {
   ".clangd",
   ".clang-tidy",
@@ -39,7 +39,7 @@ return {
       { "neovim/nvim-lspconfig" },
       { "hrsh7th/cmp-nvim-lsp" },
       { "NTBBloodbath/zig-tools.nvim" },
-      { "Civitasv/cmake-tools.nvim"},
+      { "Civitasv/cmake-tools.nvim" },
       { "ziglang/zig.vim" },
     },
     config = function()
@@ -56,10 +56,10 @@ return {
           timeout_ms = 10000,
         },
         servers = {
-          ['tsserver'] = {'javascript', 'typescript'},
-          ['clangd'] = {'cpp'},
-          ['gopls'] = {'go'},
-        }
+          ["tsserver"] = { "javascript", "typescript" },
+          ["clangd"] = { "cpp" },
+          ["gopls"] = { "go" },
+        },
       })
       lsp_zero.extend_lspconfig({
         sign_text = true,
@@ -73,33 +73,48 @@ return {
         mason = false,
         transparency = 50,
         keymaps = {
-          {key = '<F7>', func = require("navigator.dochighlight").hi_symbol, desc = 'Highlight Symbols'},
-          {key = '<leader>ls', func = require('navigator.symbols').side_panel, desc = "Toggle the Outline by Sidebar"},
-          {key = '<leader>lG', func = require('navigator.lspclient.config').open_lsp_log, desc = "Open Lsp Log"},
-          {key = '<leader>lc', func = vim.lsp.buf.declaration, desc = "Goto Declaration"},
-          { key = '<leader>lw',            func = require('navigator.diagnostics').show_diagnostics,                    desc = 'Show Diagnostics' },
-          { key = '<leader>lW',            func = require('navigator.diagnostics').show_buf_diagnostics,                desc = 'Show Buf Diagnostics' },
-          { key = '<Leader>lT',    func = require('navigator.diagnostics').toggle_diagnostics,                  desc = 'Toggle Diagnostics' },
-          { key = '<Leader>lb', func = require('navigator.treesitter').buf_ts, desc = 'Show Treesitter Symbols' },
-          { key = '<leader>la', func = require('navigator.reference').async_ref, desc = 'Show References' },
-          { key = '<leader>le', func = require('navigator.hierarchy').calltree, desc = 'Calltree' },
+          { key = "<F7>", func = require("navigator.dochighlight").hi_symbol, desc = "Highlight Symbols" },
+          {
+            key = "<leader>ls",
+            func = require("navigator.symbols").side_panel,
+            desc = "Toggle the Outline by Sidebar",
+          },
+          { key = "<leader>lG", func = require("navigator.lspclient.config").open_lsp_log, desc = "Open Lsp Log" },
+          { key = "<leader>lc", func = vim.lsp.buf.declaration, desc = "Goto Declaration" },
+          {
+            key = "<leader>lw",
+            func = require("navigator.diagnostics").show_diagnostics,
+            desc = "Show Diagnostics",
+          },
+          {
+            key = "<leader>lW",
+            func = require("navigator.diagnostics").show_buf_diagnostics,
+            desc = "Show Buf Diagnostics",
+          },
+          {
+            key = "<Leader>lT",
+            func = require("navigator.diagnostics").toggle_diagnostics,
+            desc = "Toggle Diagnostics",
+          },
+          { key = "<Leader>lb", func = require("navigator.treesitter").buf_ts, desc = "Show Treesitter Symbols" },
+          { key = "<leader>la", func = require("navigator.reference").async_ref, desc = "Show References" },
+          { key = "<leader>le", func = require("navigator.hierarchy").calltree, desc = "Calltree" },
           -- { key = '<leader>lp', func = require('navigator.definition').definition_preview, desc = 'Definition Preview'}
-          
         },
         lsp = {
           hover = {
             enable = true,
             go = function()
-              local w = vim.fn.expand('<cWORD>')
-              vim.cmd('GoDoc ' .. w)
+              local w = vim.fn.expand("<cWORD>")
+              vim.cmd("GoDoc " .. w)
             end,
             default = function()
               -- fallback apply to all file types not been specified above
-              local w = vim.fn.expand('<cWORD>')
+              local w = vim.fn.expand("<cWORD>")
               vim.lsp.buf.workspace_symbol(w)
             end,
           },
-          disable_lsp = {'denols', 'rust_analyzer', 'jdtls'},
+          disable_lsp = { "denols", "rust_analyzer", "jdtls" },
           lua_ls = {
             settings = {
               Lua = {
@@ -160,7 +175,6 @@ return {
           },
           clangd = {
             on_attach = function(client, bufnr)
-              
               -- clangd
               vim.keymap.set(
                 "n",
@@ -198,10 +212,9 @@ return {
                 "meson.build",
                 "meson_options.txt",
                 "build.ninja"
-              )(fname) or util.root_pattern(
-                "compile_commands.json",
-                "compile_flags.txt"
-              )(fname) or util.find_git_ancestor(fname)
+              )(fname) or util.root_pattern("compile_commands.json", "compile_flags.txt")(fname) or util.find_git_ancestor(
+                fname
+              )
             end,
             cmd = {
               "clangd",
@@ -212,7 +225,7 @@ return {
               "--function-arg-placeholders",
               "--fallback-style=llvm",
             },
-            flags = {allow_incremental_sync = true, debounce_text_changes = 500},
+            flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
             init_options = {
               usePlaceholders = true,
               completeUnimported = true,
@@ -254,29 +267,29 @@ return {
               )
 
               -- test
-              vim.keymap.set('n', "<leader>Gtu", "<cmd>GoTest<cr>", {desc = "Run Simple Unit Test"})
-              vim.keymap.set('n', "<leader>Gtf", "<cmd>GoTestFile<cr>", {desc = "Run Test for Current File"})
-              vim.keymap.set('n', "<leader>Gtn", "<cmd>GoTestFunc<cr>", {desc = "Run Test for Current Function"})
-              vim.keymap.set('n', "<leader>Gtp", "<cmd>GoTestPkg<cr>", {desc = "Run Test for Current Package"})
-              vim.keymap.set('n', "<leader>Gtc", "<cmd>GoCoverage<cr>", {desc = "Run Coverage Test"})
+              vim.keymap.set("n", "<leader>Gtu", "<cmd>GoTest<cr>", { desc = "Run Simple Unit Test" })
+              vim.keymap.set("n", "<leader>Gtf", "<cmd>GoTestFile<cr>", { desc = "Run Test for Current File" })
+              vim.keymap.set("n", "<leader>Gtn", "<cmd>GoTestFunc<cr>", { desc = "Run Test for Current Function" })
+              vim.keymap.set("n", "<leader>Gtp", "<cmd>GoTestPkg<cr>", { desc = "Run Test for Current Package" })
+              vim.keymap.set("n", "<leader>Gtc", "<cmd>GoCoverage<cr>", { desc = "Run Coverage Test" })
 
               -- Ginkgo
-              vim.keymap.set('n', "<leader>GGr", "<cmd>Ginkgo run<cr>", {desc = "Run Ginkgo Test"})
-              vim.keymap.set("n", "<leader>GGw", "<cmd>Ginkgo watch<cr>", {desc = "Watch Ginkgo Test"})
-              vim.keymap.set("n", "<leader>GGb", "<cmd>Ginkgo bootstrap<cr>", {desc = "Bootstrap Ginkgo Test"})
-              vim.keymap.set('n', "<leader>GGo", "<cmd>Ginkgo outline<cr>", {desc = "Outline Ginkgo Test"})
-              vim.keymap.set('n', "<leader>GGB", "<cmd>Ginkgo Build<cr>", {desc = "Build Ginkgo Test"})
+              vim.keymap.set("n", "<leader>GGr", "<cmd>Ginkgo run<cr>", { desc = "Run Ginkgo Test" })
+              vim.keymap.set("n", "<leader>GGw", "<cmd>Ginkgo watch<cr>", { desc = "Watch Ginkgo Test" })
+              vim.keymap.set("n", "<leader>GGb", "<cmd>Ginkgo bootstrap<cr>", { desc = "Bootstrap Ginkgo Test" })
+              vim.keymap.set("n", "<leader>GGo", "<cmd>Ginkgo outline<cr>", { desc = "Outline Ginkgo Test" })
+              vim.keymap.set("n", "<leader>GGB", "<cmd>Ginkgo Build<cr>", { desc = "Build Ginkgo Test" })
 
               -- debug
-              vim.keymap.set('n', "<leader>GDd", "<cmd>GoDebug<cr>", {desc = "Start Debug Session"})
-              vim.keymap.set('n', "<leader>GDc", "<cmd>GoDebug -c<cr>", {desc = "Compile Only"})
-              vim.keymap.set('n', "<leader>GDt", "<cmd>GoDebug -t<cr>", {desc = "Start Debug Session for Test File"})
-              vim.keymap.set('n', "<leader>GDR", "<cmd>GoDebug -R<cr>", {desc = "Restart Debug Session"})
-              vim.keymap.set("n", "<leader>GDp", "<cmd>GoDebug -p<cr>", {desc = "Launch Package Test & Start Debug"})
-              vim.keymap.set('n', "<leader>GDs", "<cmd>GoDebug -s<cr>", {desc = "Stop Debug Session"})
-              vim.keymap.set('n', "<leader>GDb", "<cmd>GoBreakToggle<cr>", {desc = "Toggle the Break Point"})
-              vim.keymap.set("n", "<leader>GDc", "<cmd>GoDbgContinue<cr>", {desc = "Continue Debug Session"})
-              vim.keymap.set("n", "<leader>GDC", "<cmd>BreakCondition<cr>", {desc = "Conditional Break"})
+              vim.keymap.set("n", "<leader>GDd", "<cmd>GoDebug<cr>", { desc = "Start Debug Session" })
+              vim.keymap.set("n", "<leader>GDc", "<cmd>GoDebug -c<cr>", { desc = "Compile Only" })
+              vim.keymap.set("n", "<leader>GDt", "<cmd>GoDebug -t<cr>", { desc = "Start Debug Session for Test File" })
+              vim.keymap.set("n", "<leader>GDR", "<cmd>GoDebug -R<cr>", { desc = "Restart Debug Session" })
+              vim.keymap.set("n", "<leader>GDp", "<cmd>GoDebug -p<cr>", { desc = "Launch Package Test & Start Debug" })
+              vim.keymap.set("n", "<leader>GDs", "<cmd>GoDebug -s<cr>", { desc = "Stop Debug Session" })
+              vim.keymap.set("n", "<leader>GDb", "<cmd>GoBreakToggle<cr>", { desc = "Toggle the Break Point" })
+              vim.keymap.set("n", "<leader>GDc", "<cmd>GoDbgContinue<cr>", { desc = "Continue Debug Session" })
+              vim.keymap.set("n", "<leader>GDC", "<cmd>BreakCondition<cr>", { desc = "Conditional Break" })
 
               vim.keymap.set("n", "<leader>Gb", "<cmd>GoBuild %<cr>", { desc = "Go Build Args" })
               vim.keymap.set("n", "<leader>Gc", "<cmd>GoCmt<cr>", { desc = "Comment" })
@@ -335,7 +348,7 @@ return {
               },
             },
           },
-          
+
           tsserver = {
             root_dir = function(...)
               return util.root_pattern(".git", "package.json", "jsconfig.json", "tsconfig.json")(...)
@@ -429,8 +442,8 @@ return {
               },
             },
           },
-          
-          servers = {'cmake', 'ltex', 'ruff', 'ruff_lsp', 'autotools_ls', 'pyright'},
+
+          servers = { "cmake", "ltex", "ruff", "ruff_lsp", "autotools_ls", "pyright", "volar" },
         },
       })
       -- vim.keymap.set("n", "<leader>ls", "<cmd>LspSymbols<cr>", { desc = "Toggle the Outline by Sidebar" })
