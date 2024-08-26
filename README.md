@@ -77,6 +77,8 @@ index-url = http://mirrors.aliyun.com/pypi/simple/
 [install]
 trusted-host = http://mirrors.aliyun.com
 </pre>
+add venv package,
+<pre>$ apt install python3.10-venv</pre>
 </details>
 
 <details open>
@@ -237,5 +239,17 @@ After finishing installed, config the npm mirror if you like,
 <pre>$ curl -fsSL https://ollama.com/install.sh | sh</pre>
 </details>
 
+<details>
+<summary>ImageMagick</summary>
+<pre>$ sudo apt install libmagickwand-dev</pre>
+</details>
 
+<details>
+<summary>wasm_nvim</summary>
+Build from source:
+<pre>
+$ cd ~/.local/share/nvim/lazy/wasm_nvim/
+$ cargo make build
+</pre>
+</details>
 

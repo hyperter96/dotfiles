@@ -223,3 +223,15 @@ magick
 mimetypes
 nio
 xml2lua
+venv
+ImageMagick
+libmagickwand
+kratos
+jdbc
+protobuf
+grpc
+wsl
+api
+tsconfig
+compilerOptions
+Vue
