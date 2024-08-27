@@ -43,7 +43,7 @@ require("lazy").setup({
       optional = false,
       opts = {
         formatters_by_ft = {
-          ["python"] = { "black" },
+          ["python"] = { "isort", "black" },
           lua = { "stylua" },
           javascript = { "dprint", { "prettierd", "prettier" } },
           javascriptreact = { "dprint" },
@@ -75,11 +75,17 @@ require("lazy").setup({
     },
     {
       "mfussenegger/nvim-lint",
+      event = { "BufReadPre", "BufNewFile" },
       opts = {
         linters_by_ft = {
           lua = { "selene", "luacheck" },
           cmake = { "cmakelint" },
-          proto = { "protolint"},
+          proto = { "protolint" },
+          javascript = { "eslint_d" },
+          typescript = { "eslint_d" },
+          javascriptreact = { "eslint_d" },
+          typescriptreact = { "eslint_d" },
+          -- markdown = { "markdownlint", "vale" },
         },
         linters = {
           selene = {
@@ -100,8 +106,56 @@ require("lazy").setup({
               return vim.fs.find({ ".luacheckrc" }, { path = root, upward = true })[1]
             end,
           },
+          javascript = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
+            end,
+          },
+          javascriptreact = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
+            end,
+          },
+          typescript = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
+            end,
+          },
+          typescriptreact = {
+            condition = function(ctx)
+              local root = LazyVim.root.get({ normalize = true })
+              if root ~= vim.uv.cwd() then
+                return false
+              end
+              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
+            end,
+          },
         },
       },
+      -- config = function()
+      --   local lint = require("lint")
+      --
+      --   local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+      --
+      --   vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      --     group = lint_augroup,
+      --     callback = function()
+      --       lint.try_lint()
+      --     end,
+      --   })
+      -- end,
     },
 
     -- lang

@@ -5,7 +5,7 @@
 - Programming Languages: Go, Rust, Haskell, Python, Java, Typescript, C++, Zig
 - System Management: Bigfile, perfanno
 - Artificial Intelligence: Ollama
-- Colour Theme Picker
+- Color Theme Picker
 - Leetcode
 - DB Connection
 - Source code Management: Octo, LazyGit
@@ -37,12 +37,14 @@ $ sudo apt install openjdk-21-jdk -y
 </li>
 </details>
 
-After Maven is installed, add the mirror if you like,
+After installing Maven, add the mirror such as,
+
 <pre>
 $ vi ~/.maven/conf/settings.xml
 </pre>
 
 with the following settings edited,
+
 ```xml
 <settings>
     <mirrors>
@@ -68,14 +70,18 @@ $ apt install python3.12
 
 // Install pip
 $ curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12
+
 </pre>
 If you wanna install packages with mirrors:
 <pre>
 $ cat ~/.pip/pip.conf
 [global]
-index-url = http://mirrors.aliyun.com/pypi/simple/
+index-url = https://mirrors.aliyun.com/pypi/simple/
 [install]
-trusted-host = http://mirrors.aliyun.com
+trusted-host = mirrors.aliyun.com
+
+ssl_verify: false
+
 </pre>
 add venv package,
 <pre>$ apt install python3.10-venv</pre>
@@ -95,6 +101,7 @@ registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
 
 [source.ustc]
 registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+
 </pre>
 </details>
 
@@ -159,7 +166,6 @@ In order to use Volar, please add the following to the file:
 
 ### Tools
 
-
 <details>
 <summary>fzf</summary>
 <pre>$ sudo apt install fzf</pre>
@@ -170,18 +176,18 @@ In order to use Volar, please add the following to the file:
 <pre>$ sudo apt install ripgrep</pre>
 </details>
 
-
 <details>
 <summary>chrome</summary>
 <pre>
 <code lang="bash">
 
 $ curl -O https://packages.cloud.google.com/apt/doc/apt-key.gpg && sudo apt-key add apt-key.gpg
-$ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' 
+$ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 
 $ sudo apt-get update
 $ sudo apt-get install google-chrome-stable
 </code>
+
 </pre>
 </details>
 
@@ -231,7 +237,6 @@ then use the following command to login:
 <pre>$ sudo apt install -y ca-certificates curl gnupg</pre>
 </details>
 
-
 <details>
 <summary>nvm</summary>
 Install `nvm` package manager & node.js:
@@ -266,4 +271,3 @@ $ cd ~/.local/share/nvim/lazy/wasm_nvim/
 $ cargo make build
 </pre>
 </details>
-

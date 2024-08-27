@@ -6,10 +6,11 @@ return {
       ensure_installed = {
         "black",
         "codelldb",
-        -- "clangd",
+        "clangd",
         "clang-format",
         "cmakelang",
         "cmakelint",
+        "eslint_d",
         "goimports",
         "gofumpt",
         "gopls",
@@ -17,6 +18,7 @@ return {
         "debugpy",
         "gomodifytags",
         "impl",
+        "isort",
         "delve",
         "markdownlint-cli2",
         "markdown-toc",
@@ -30,7 +32,7 @@ return {
         "typescript-language-server",
         "tailwindcss-language-server",
         "ansible-lint",
-        -- "ltex-ls",
+        "ltex-ls",
         "hadolint",
         "vue-language-server",
         "taplo",
@@ -42,5 +44,20 @@ return {
         "haskell-debug-adapter",
       },
     },
+    config = function()
+      -- import mason
+      local mason = require("mason")
+
+      -- enable mason and configure icons
+      mason.setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+          },
+        },
+      })
+    end,
   },
 }

@@ -235,3 +235,5 @@ api
 tsconfig
 compilerOptions
 Vue
+ssl
+lazygit
