@@ -7,12 +7,12 @@ return {
       or nil,
     dependencies = {
       {
-        "rafamadriz/friendly-snippets",
+        "honza/vim-snippets",
         config = function()
           local cmp = require("cmp")
           local cmp_action = require("lsp-zero").cmp_action()
           local cmp_format = require("lsp-zero").cmp_format({ details = true })
-          require("luasnip.loaders.from_vscode").lazy_load()
+          require("luasnip.loaders.from_snipmate").lazy_load()
 
           cmp.setup({
             sources = {

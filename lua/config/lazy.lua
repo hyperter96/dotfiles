@@ -106,56 +106,9 @@ require("lazy").setup({
               return vim.fs.find({ ".luacheckrc" }, { path = root, upward = true })[1]
             end,
           },
-          javascript = {
-            condition = function(ctx)
-              local root = LazyVim.root.get({ normalize = true })
-              if root ~= vim.uv.cwd() then
-                return false
-              end
-              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
-            end,
-          },
-          javascriptreact = {
-            condition = function(ctx)
-              local root = LazyVim.root.get({ normalize = true })
-              if root ~= vim.uv.cwd() then
-                return false
-              end
-              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
-            end,
-          },
-          typescript = {
-            condition = function(ctx)
-              local root = LazyVim.root.get({ normalize = true })
-              if root ~= vim.uv.cwd() then
-                return false
-              end
-              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
-            end,
-          },
-          typescriptreact = {
-            condition = function(ctx)
-              local root = LazyVim.root.get({ normalize = true })
-              if root ~= vim.uv.cwd() then
-                return false
-              end
-              return vim.fs.find({ "eslint.config.js" }, { path = root, upward = true })[1]
-            end,
-          },
         },
       },
-      -- config = function()
-      --   local lint = require("lint")
-      --
-      --   local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-      --
-      --   vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-      --     group = lint_augroup,
-      --     callback = function()
-      --       lint.try_lint()
-      --     end,
-      --   })
-      -- end,
+      
     },
 
     -- lang
@@ -167,10 +120,9 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.helm" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.lang.toml" },
-    -- { import = "lazyvim.plugins.extras.lang.cmake" },
 
     -- linting
-    { import = "lazyvim.plugins.extras.linting.eslint" },
+    -- { import = "lazyvim.plugins.extras.linting.eslint" },
 
     -- UI
     -- { import = "lazyvim.plugins.extras.ui.edgy" },
