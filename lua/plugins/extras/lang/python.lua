@@ -102,6 +102,7 @@ return {
   },
   {
     "benlubas/molten-nvim",
+    optional = true,
     version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
     build = ":UpdateRemotePlugins",
     init = function()
