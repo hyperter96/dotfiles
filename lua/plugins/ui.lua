@@ -63,14 +63,26 @@ return {
           },
           never_show = {},
         },
-      }
+      },
+    },
+  },
+  {
+    "grapp-dev/nui-components.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim"
     }
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    config = function()
+      require("spectre").setup()
+    end,
   },
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
-    version = "*", 
-    dependencies = 'nvim-tree/nvim-web-devicons',
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
@@ -251,7 +263,7 @@ return {
     end,
   },
   { "MunifTanjim/nui.nvim", lazy = true },
-  { 
+  {
     "folke/noice.nvim",
     optional = false,
     event = "VeryLazy",
@@ -299,32 +311,32 @@ return {
     event = "VeryLazy",
   },
   {
-    'nvimdev/lspsaga.nvim',
+    "nvimdev/lspsaga.nvim",
     optional = false,
     config = function()
-      require('lspsaga').setup({})
-      vim.keymap.set('n', '<leader>ld', '<cmd>Lspsaga hover_doc<cr>', {desc = "Hover Declaration"})
-      vim.keymap.set('n', '<leader>lp', '<cmd>Lspsaga peek_definition<cr>', { desc = "Invoke Definition"})
-      vim.keymap.set('n', '<leader>ly', '<cmd>Lspsaga peek_type_definition<cr>', {desc = "Invoke Type Definition"})
-      vim.keymap.set('n', '<c-g>', '<cmd>Lspsaga goto_definition<cr>', { silent = true})
-      vim.keymap.set('n', '<leader>lt', '<cmd>Lspsaga goto_type_definition<cr>', {desc = "Goto Type Definition"})
-      vim.keymap.set('n', '<leader>li', '<cmd>Lspsaga incoming_calls<cr>', {desc = "Incoming Calls"})
-      vim.keymap.set('n', '<leader>lo', '<cmd>Lspsaga outgoing_calls<cr>', {desc = "Outgoing Calls"})
-      vim.keymap.set('n', '<leader>lf', '<cmd>Lspsaga finder<cr>', {desc = "Show References & Implementations"})
+      require("lspsaga").setup({})
+      vim.keymap.set("n", "<leader>ld", "<cmd>Lspsaga hover_doc<cr>", { desc = "Hover Declaration" })
+      vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", { desc = "Invoke Definition" })
+      vim.keymap.set("n", "<leader>ly", "<cmd>Lspsaga peek_type_definition<cr>", { desc = "Invoke Type Definition" })
+      vim.keymap.set("n", "<c-g>", "<cmd>Lspsaga goto_definition<cr>", { silent = true })
+      vim.keymap.set("n", "<leader>lt", "<cmd>Lspsaga goto_type_definition<cr>", { desc = "Goto Type Definition" })
+      vim.keymap.set("n", "<leader>li", "<cmd>Lspsaga incoming_calls<cr>", { desc = "Incoming Calls" })
+      vim.keymap.set("n", "<leader>lo", "<cmd>Lspsaga outgoing_calls<cr>", { desc = "Outgoing Calls" })
+      vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga finder<cr>", { desc = "Show References & Implementations" })
       -- vim.keymap.set('n', '<leader>ls', '<cmd>Lspsaga outline<cr>', {desc = "Toggle the Outline by Sidebar"})
     end,
     dependencies = {
-        'nvim-treesitter/nvim-treesitter', -- optional
-        'nvim-tree/nvim-web-devicons',     -- optional
-    }
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
   },
   {
-    'topaxi/gh-actions.nvim',
+    "topaxi/gh-actions.nvim",
     keys = {
-      { '<leader>gH', '<cmd>GhActions<cr>', desc = 'Open Github Actions' },
+      { "<leader>gH", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
     },
     -- optional, you can also install and use `yq` instead.
-    build = 'make',
+    build = "make",
     optional = true,
   },
   {
@@ -337,20 +349,20 @@ return {
     "echasnovski/mini.pairs",
     enabled = false,
   },
-  { 
-    'gen740/SmoothCursor.nvim',
+  {
+    "gen740/SmoothCursor.nvim",
     config = function()
-      require('smoothcursor').setup({
+      require("smoothcursor").setup({
         texthl = "SmoothCursorOrange",
       })
-    end
+    end,
   },
   {
     "karb94/neoscroll.nvim",
-    config = function ()
-      require('neoscroll').setup({
-        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>'},
+    config = function()
+      require("neoscroll").setup({
+        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>" },
       })
-    end
-  }
+    end,
+  },
 }

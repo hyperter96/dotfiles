@@ -9,13 +9,13 @@ vim.keymap.del("n", "<leader>|")
 vim.keymap.del("n", "<leader>K")
 vim.keymap.del("n", "<leader>l")
 vim.keymap.del("n", "<leader>L")
-vim.keymap.del({'n', 'x'}, "y")
+vim.keymap.del({ "n", "x" }, "y")
 
 -- switch the themes
 vim.keymap.set("n", "<c-t>", "<cmd>Telescope themes<cr>")
 
 -- yank key
-vim.keymap.set({"n", "x"}, "<c-c>", "<Plug>(YankyYank)", {silent = true})
+vim.keymap.set({ "n", "x" }, "<c-c>", "<Plug>(YankyYank)", { silent = true })
 
 -- Open compiler
 vim.api.nvim_set_keymap("n", "<F6>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
@@ -63,4 +63,13 @@ wk.add({
   },
 })
 
-
+local buffers = require("utils.buffers")
+local is_default_buffer = function()
+  return buffers.is_not_focused_buffer("NvimTree_1", "mind")
+end
+vim.keymap.set("n", "<Home>", function()
+  if is_default_buffer() then
+    local menu = require("plugins.extras.pickers.spectre")
+    menu.toggle()
+  end
+end)
