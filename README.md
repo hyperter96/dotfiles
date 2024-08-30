@@ -271,3 +271,26 @@ $ cd ~/.local/share/nvim/lazy/wasm_nvim/
 $ cargo make build
 </pre>
 </details>
+
+### Terminal UI
+
+<details>
+<summary>neovide</summary>
+<li>
+    Requirements: nvim & neovide installed on Windows
+</li>
+<li>
+    Add the Environment Variable for nvim in the file .profile on WSL2
+</li>
+<li>
+  Install neovide on Windows by:
+    <pre>scoop install neovide</pre>
+</li>
+<li>Edit the config.toml of neovide on Windows:
+  <pre>
+  $ vi C:\Users\${username}\AppData\Roaming\neovide\config.toml
+  frame = "none"
+  wsl = true
+  </pre>
+</li>
+</details>
