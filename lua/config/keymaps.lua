@@ -67,7 +67,17 @@ local buffers = require("utils.buffers")
 local is_default_buffer = function()
   return buffers.is_not_focused_buffer("NvimTree_1", "mind")
 end
-vim.keymap.set("n", "<Home>", function()
+
+-- ollama
+vim.keymap.set("n", "<localleader>gm", function()
+  if is_default_buffer() then
+    local menu = require("plugins.extras.pickers.ollama")
+    menu.toggle()
+  end
+end)
+
+-- nvim-spectre
+vim.keymap.set("n", "<C-a>", function()
   if is_default_buffer() then
     local menu = require("plugins.extras.pickers.spectre")
     menu.toggle()

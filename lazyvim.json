@@ -29,6 +29,7 @@
     "plugins.extras.util.silicon",
     "plugins.extras.util.gen",
     "plugins.extras.util.precognition",
+    "plugins.extras.util.dashboard",
     "plugins.extras.coding.navigator",
     "plugins.extras.coding.package-info",
     "plugins.extras.coding.wasm",

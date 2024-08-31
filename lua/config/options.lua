@@ -11,7 +11,7 @@ opt.conceallevel = 0
 vim.g.maplocalleader = ","
 
 if vim.g.neovide then
-  vim.o.guifont = "Hack Nerd Font:h12"
+  vim.o.guifont = "Hack Nerd Font:h11"
   -- Helper function for transparency formatting
   local alpha = function()
     return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
