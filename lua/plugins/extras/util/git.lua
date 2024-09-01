@@ -18,11 +18,12 @@ return {
     end,
   },
   {
-    '2kabhishek/co-author.nvim',
+    "2kabhishek/co-author.nvim",
     dependencies = {
-        'stevearc/dressing.nvim',
-        'nvim-telescope/telescope.nvim',
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
     },
-    cmd = {'CoAuthor'},
+    cmd = { "CoAuthor" },
   },
+  { "sindrets/diffview.nvim" },
 }

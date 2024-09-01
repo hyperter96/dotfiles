@@ -67,4 +67,9 @@ return {
     end,
   },
   { "IndianBoy42/tree-sitter-just", event = "BufRead justfile", opts = {} },
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
 }
