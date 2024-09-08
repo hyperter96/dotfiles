@@ -386,6 +386,8 @@ return {
             root_dir = function(...)
               return util.root_pattern(".git")(...)
             end,
+            filetypes_exclude = { "markdown" },
+            filetypes_include = {},
           },
           -- yamlls = {
           --   settings = {
@@ -455,7 +457,17 @@ return {
             },
           },
 
-          servers = { "cmake", "ltex", "ruff", "ruff_lsp", "autotools_ls", "pyright", "volar", "protolint", "protobuf_language_server" },
+          servers = {
+            "cmake",
+            "ltex",
+            "ruff",
+            "ruff_lsp",
+            "autotools_ls",
+            "pyright",
+            "volar",
+            "protolint",
+            "protobuf_language_server",
+          },
         },
       })
       -- vim.keymap.set("n", "<leader>ls", "<cmd>LspSymbols<cr>", { desc = "Toggle the Outline by Sidebar" })
