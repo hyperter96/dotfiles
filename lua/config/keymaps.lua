@@ -17,25 +17,6 @@ vim.keymap.set("n", "<c-t>", "<cmd>Telescope themes<cr>")
 -- yank key
 vim.keymap.set({ "n", "x" }, "<c-c>", "<Plug>(YankyYank)", { silent = true })
 
--- Open compiler
-vim.api.nvim_set_keymap("n", "<F6>", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
-
--- Redo last selected option
-vim.api.nvim_set_keymap(
-  "n",
-  "<S-F6>",
-  "<cmd>CompilerStop<cr>" -- (Optional, to dispose all tasks before redo)
-    .. "<cmd>CompilerRedo<cr>",
-  { noremap = true, silent = true }
-)
-
--- Toggle compiler results
-vim.api.nvim_set_keymap("n", "<S-F7>", "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
-
--- Using ufo provider need remap `zR` and `zM`.
-vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-
 local wk = require("which-key")
 wk.add({
   mode = { "v" },

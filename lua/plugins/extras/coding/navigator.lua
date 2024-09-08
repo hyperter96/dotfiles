@@ -24,9 +24,9 @@ return {
         hls = function()
           return true
         end,
-        tsserver = function()
-          return true
-        end,
+        -- tsserver = function()
+        --   return true
+        -- end,
         clangd = function(_, opts)
           local clangd_ext_opts = LazyVim.opts("clangd_extensions.nvim")
           require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
@@ -56,7 +56,7 @@ return {
           timeout_ms = 10000,
         },
         servers = {
-          ["tsserver"] = { "javascript", "typescript" },
+          -- ["tsserver"] = { "javascript", "typescript" },
           ["clangd"] = { "cpp" },
           ["gopls"] = { "go" },
         },
@@ -349,41 +349,53 @@ return {
             },
           },
 
-          tsserver = {
-            root_dir = function(...)
-              return util.root_pattern(".git", "package.json", "jsconfig.json", "tsconfig.json")(...)
-            end,
-            single_file_support = true,
-            settings = {
-              typescript = {
-                inlayHints = {
-                  includeInlayParameterNameHints = "literal",
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayVariableTypeHints = false,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayEnumMemberValueHints = true,
-                },
-              },
-              javascript = {
-                inlayHints = {
-                  includeInlayParameterNameHints = "all",
-                  includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                  includeInlayFunctionParameterTypeHints = true,
-                  includeInlayVariableTypeHints = true,
-                  includeInlayPropertyDeclarationTypeHints = true,
-                  includeInlayFunctionLikeReturnTypeHints = true,
-                  includeInlayEnumMemberValueHints = true,
-                },
-              },
-            },
-          },
+          -- tsserver = {
+          --   on_attach = function (client, bufnr)
+          --     client.server_capabilities.documentFormattingProvider = false
+          --   end,
+          --   root_dir = function(...)
+          --     return util.root_pattern(".git", "package.json", "jsconfig.json", "tsconfig.json")(...)
+          --   end,
+          --   single_file_support = true,
+          --   settings = {
+          --     typescript = {
+          --       inlayHints = {
+          --         includeInlayParameterNameHints = "literal",
+          --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          --         includeInlayFunctionParameterTypeHints = true,
+          --         includeInlayVariableTypeHints = false,
+          --         includeInlayPropertyDeclarationTypeHints = true,
+          --         includeInlayFunctionLikeReturnTypeHints = true,
+          --         includeInlayEnumMemberValueHints = true,
+          --       },
+          --     },
+          --     javascript = {
+          --       inlayHints = {
+          --         includeInlayParameterNameHints = "all",
+          --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          --         includeInlayFunctionParameterTypeHints = true,
+          --         includeInlayVariableTypeHints = true,
+          --         includeInlayPropertyDeclarationTypeHints = true,
+          --         includeInlayFunctionLikeReturnTypeHints = true,
+          --         includeInlayEnumMemberValueHints = true,
+          --       },
+          --     },
+          --   },
+          -- },
           tailwindcss = {
             root_dir = function(...)
               return util.root_pattern(".git")(...)
             end,
           },
+          -- yamlls = {
+          --   settings = {
+          --     yaml = {
+          --       schemas = {
+          --         ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+          --       },
+          --     },
+          --   },
+          -- },
           texlab = {
             cmd = {
               "texlab",
@@ -443,7 +455,7 @@ return {
             },
           },
 
-          servers = { "cmake", "ltex", "ruff", "ruff_lsp", "autotools_ls", "pyright", "volar" },
+          servers = { "cmake", "ltex", "ruff", "ruff_lsp", "autotools_ls", "pyright", "volar", "protolint", "protobuf_language_server" },
         },
       })
       -- vim.keymap.set("n", "<leader>ls", "<cmd>LspSymbols<cr>", { desc = "Toggle the Outline by Sidebar" })

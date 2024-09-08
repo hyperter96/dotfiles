@@ -74,9 +74,9 @@ return {
           -- this will disable LazyVim from setting up jdtls automatically
           return true
         end,
-        tsserver = function()
-          return true
-        end,
+        -- tsserver = function()
+        --   return true
+        -- end,
         clangd = function(_, opts)
           local clangd_ext_opts = LazyVim.opts("clangd_extensions.nvim")
           require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
@@ -91,7 +91,6 @@ return {
       root = { "vue.config.js" },
     })
   end,
-  
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -145,65 +144,65 @@ return {
               },
             },
           },
-          keys = {
-            {
-              "TD",
-              function()
-                local params = vim.lsp.util.make_position_params()
-                LazyVim.lsp.execute({
-                  command = "typescript.goToSourceDefinition",
-                  arguments = { params.textDocument.uri, params.position },
-                  open = true,
-                })
-              end,
-              desc = "Goto Source Definition",
-            },
-            {
-              "TR",
-              function()
-                LazyVim.lsp.execute({
-                  command = "typescript.findAllFileReferences",
-                  arguments = { vim.uri_from_bufnr(0) },
-                  open = true,
-                })
-              end,
-              desc = "File References",
-            },
-            {
-              "<leader>To",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-            {
-              "<leader>TM",
-              LazyVim.lsp.action["source.addMissingImports.ts"],
-              desc = "Add missing imports",
-            },
-            {
-              "<leader>Tu",
-              LazyVim.lsp.action["source.removeUnused.ts"],
-              desc = "Remove unused imports",
-            },
-            {
-              "<leader>TD",
-              LazyVim.lsp.action["source.fixAll.ts"],
-              desc = "Fix all diagnostics",
-            },
-            {
-              "<leader>TV",
-              function()
-                LazyVim.lsp.execute({ command = "typescript.selectTypeScriptVersion" })
-              end,
-              desc = "Select TS workspace version",
-            },
-          },
+          -- keys = {
+          --   {
+          --     "TD",
+          --     function()
+          --       local params = vim.lsp.util.make_position_params()
+          --       LazyVim.lsp.execute({
+          --         command = "typescript.goToSourceDefinition",
+          --         arguments = { params.textDocument.uri, params.position },
+          --         open = true,
+          --       })
+          --     end,
+          --     desc = "Goto Source Definition",
+          --   },
+          --   {
+          --     "TR",
+          --     function()
+          --       LazyVim.lsp.execute({
+          --         command = "typescript.findAllFileReferences",
+          --         arguments = { vim.uri_from_bufnr(0) },
+          --         open = true,
+          --       })
+          --     end,
+          --     desc = "File References",
+          --   },
+          --   {
+          --     "<leader>To",
+          --     LazyVim.lsp.action["source.organizeImports"],
+          --     desc = "Organize Imports",
+          --   },
+          --   {
+          --     "<leader>TM",
+          --     LazyVim.lsp.action["source.addMissingImports.ts"],
+          --     desc = "Add missing imports",
+          --   },
+          --   {
+          --     "<leader>Tu",
+          --     LazyVim.lsp.action["source.removeUnused.ts"],
+          --     desc = "Remove unused imports",
+          --   },
+          --   {
+          --     "<leader>TD",
+          --     LazyVim.lsp.action["source.fixAll.ts"],
+          --     desc = "Fix all diagnostics",
+          --   },
+          --   {
+          --     "<leader>TV",
+          --     function()
+          --       LazyVim.lsp.execute({ command = "typescript.selectTypeScriptVersion" })
+          --     end,
+          --     desc = "Select TS workspace version",
+          --   },
+          -- },
         },
       },
       setup = {
-        tsserver = function()
-          -- disable tsserver
-          return true
-        end,
+        -- tsserver = function()
+        --   -- disable tsserver
+        --   return true
+        -- end,
         vtsls = function(_, opts)
           LazyVim.lsp.on_attach(function(client, buffer)
             client.commands["_typescript.moveToFileRefactoring"] = function(command, ctx)
