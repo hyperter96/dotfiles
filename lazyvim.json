@@ -11,6 +11,7 @@
     "plugins.extras.lang.haskell",
     "plugins.extras.lang.python",
     "plugins.extras.lang.java",
+    "plugins.extras.lang.yaml",
     "plugins.extras.util.bigfile",
     "plugins.extras.util.hardtime",
     "plugins.extras.util.git",

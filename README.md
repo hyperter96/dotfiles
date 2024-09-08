@@ -177,6 +177,11 @@ In order to use Volar, please add the following to the file:
 </details>
 
 <details>
+<summary>proto_language_server</summary>
+<pre>$ go install github.com/lasorda/protobuf-language-server@latest</pre>
+</details>
+
+<details>
 <summary>chrome</summary>
 <pre>
 <code lang="bash">
@@ -195,6 +200,18 @@ $ sudo apt-get install google-chrome-stable
 <summary>lazygit</summary>
 <li>
 Lazygit: <a href="https://sourceforge.net/projects/lazygit.mirror/">Lazygit Download Page</a>
+</li>
+<li>
+Installation of delta: <pre> $cargo install git-delta </pre>
+</li>
+<li>
+Lazygit Config file for side-by-side diff view:
+<pre>
+git: 
+  paging:
+    colorArg: always
+      pager: delta --dark --paging=never --syntax-theme base16-256 -s
+</pre>
 </li>
 </details>
 
