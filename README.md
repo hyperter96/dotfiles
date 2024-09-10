@@ -210,7 +210,7 @@ Lazygit Config file for side-by-side diff view:
 git: 
   paging:
     colorArg: always
-      pager: delta --dark --paging=never --syntax-theme base16-256 -s
+    pager: delta --dark --paging=never --syntax-theme base16-256 -s
 </pre>
 </li>
 </details>
