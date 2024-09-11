@@ -88,6 +88,18 @@ require("lazy").setup({
           -- markdown = { "markdownlint", "vale" },
         },
         linters = {
+          eslint_d = {
+            args = {
+              "--no-warn-ignored", -- <-- this is the key argument
+              "--format",
+              "json",
+              "--stdin",
+              "--stdin-filename",
+              function()
+                return vim.api.nvim_buf_get_name(0)
+              end,
+            },
+          },
           selene = {
             condition = function(ctx)
               local root = LazyVim.root.get({ normalize = true })
