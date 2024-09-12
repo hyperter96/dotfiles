@@ -9,6 +9,9 @@ vim.keymap.del("n", "<leader>|")
 vim.keymap.del("n", "<leader>K")
 vim.keymap.del("n", "<leader>l")
 vim.keymap.del("n", "<leader>L")
+vim.keymap.del("n", "<leader>sp")
+vim.keymap.del("n", "<leader>sW")
+vim.keymap.del("n", "<leader>sw")
 vim.keymap.del({ "n", "x" }, "y")
 
 -- switch the themes
@@ -64,3 +67,13 @@ vim.keymap.set("n", "<C-a>", function()
     menu.toggle()
   end
 end)
+
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})

@@ -289,6 +289,12 @@ $ cargo make build
 </pre>
 </details>
 
+<details>
+<summary>nvim-spectre</summary>
+Build nvim-oxi with cargo:
+<pre>$ bash build.sh nvim-oxi</pre>
+</details>
+
 ### Terminal UI
 
 <details>

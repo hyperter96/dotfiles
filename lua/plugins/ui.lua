@@ -69,13 +69,19 @@ return {
   {
     "grapp-dev/nui-components.nvim",
     dependencies = {
-      "MunifTanjim/nui.nvim"
-    }
+      "MunifTanjim/nui.nvim",
+    },
   },
   {
     "nvim-pack/nvim-spectre",
     config = function()
-      require("spectre").setup()
+      require("spectre").setup({
+        default = {
+            replace = {
+                cmd = "oxi"
+          }
+        }
+      })
     end,
   },
   {
