@@ -17,6 +17,9 @@ vim.keymap.del({ "n", "x" }, "y")
 -- switch the themes
 vim.keymap.set("n", "<c-t>", "<cmd>Telescope themes<cr>")
 
+-- toggle simulator list
+vim.keymap.set("n", "<leader>se", "<cmd>Telescope simulators run<cr>", { desc = "Toggle Simulator List" })
+
 -- yank key
 vim.keymap.set({ "n", "x" }, "<c-c>", "<Plug>(YankyYank)", { silent = true })
 
@@ -68,12 +71,12 @@ vim.keymap.set("n", "<C-a>", function()
   end
 end)
 
-vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word"
+vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+  desc = "Search current word",
 })
-vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-    desc = "Search current word"
+vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = "Search current word",
 })
-vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-    desc = "Search on current file"
+vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+  desc = "Search on current file",
 })

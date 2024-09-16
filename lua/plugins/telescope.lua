@@ -167,4 +167,13 @@ return {
       require("telescope").load_extension("undo")
     end,
   },
+  {
+    "dimaportenko/telescope-simulators.nvim",
+    config = function()
+      require("simulators").setup({
+        android_emulator = true,
+        apple_simulator = false,
+      })
+    end,
+  },
 }

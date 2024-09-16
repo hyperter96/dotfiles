@@ -77,10 +77,10 @@ return {
     config = function()
       require("spectre").setup({
         default = {
-            replace = {
-                cmd = "oxi"
-          }
-        }
+          replace = {
+            cmd = "oxi",
+          },
+        },
       })
     end,
   },
@@ -369,6 +369,13 @@ return {
       require("neoscroll").setup({
         mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>" },
       })
+    end,
+  },
+  {
+    dir = "~/go/src/nui-spectre", -- Your path
+    name = "nui-spectre.nvim",
+    config = function()
+      require("nui-spectre")
     end,
   },
 }
