@@ -1,147 +1,5 @@
+local LazyVim = require("lazyvim.util")
 return {
-  {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    lazy = true,
-    dependencies = {
-      "andrew-george/telescope-themes",
-      -- other dependencies
-    },
-    config = function()
-      -- get builtin schemes list
-
-      require("telescope").setup({
-        extensions = {
-          themes = {
-            -- you can add regular telescope config
-            -- that you want to apply on this picker only
-            layout_config = {
-              horizontal = {
-                width = 0.8,
-                height = 0.7,
-              },
-            },
-
-            -- extension specific config
-
-            -- (boolean) -> show/hide previewer window
-            enable_previewer = true,
-
-            -- (boolean) -> enable/disable live preview
-            enable_live_preview = false,
-
-            -- all builtin themes are ignored by default
-            -- (list) -> provide table of theme names to overwrite builtins list
-            ignore = { "default" },
-
-            persist = {
-              -- enable persisting last theme choice
-              enabled = true,
-
-              -- override path to file that execute colorscheme command
-              path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua",
-            },
-          },
-        },
-      })
-    end,
-  },
-  { "akinsho/toggleterm.nvim", version = "*", config = true },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      filesystem = {
-        filtered_items = {
-          visible = true,
-          show_hidden_count = true,
-          hide_dotfiles = false,
-          hide_gitignored = true,
-          hide_by_name = {
-            -- '.git',
-            -- '.DS_Store',
-            -- 'thumbs.db',
-          },
-          never_show = {},
-        },
-      },
-    },
-  },
-  {
-    "grapp-dev/nui-components.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-  },
-  {
-    "nvim-pack/nvim-spectre",
-    config = function()
-      require("spectre").setup({
-        default = {
-          replace = {
-            cmd = "oxi",
-          },
-        },
-      })
-    end,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    keys = {
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
-      { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete Other Buffers" },
-      { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
-      { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete Buffers to the Left" },
-      { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
-      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
-      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
-    },
-    opts = {
-      options = {
-        -- stylua: ignore
-        close_command = function(n) LazyVim.ui.bufremove(n) end,
-        -- stylua: ignore
-        right_mouse_command = function(n) LazyVim.ui.bufremove(n) end,
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = LazyVim.config.icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warn .. diag.warning or "")
-          return vim.trim(ret)
-        end,
-        offsets = {
-          {
-            filetype = "neo-tree",
-            text = "Neo-tree",
-            highlight = "Directory",
-            text_align = "left",
-          },
-        },
-        ---@param opts bufferline.IconFetcherOpts
-        get_element_icon = function(opts)
-          return LazyVim.config.icons.ft[opts.filetype]
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("bufferline").setup(opts)
-      -- Fix bufferline when restoring a session
-      vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete" }, {
-        callback = function()
-          vim.schedule(function()
-            pcall(nvim_bufferline)
-          end)
-        end,
-      })
-    end,
-  },
   {
     "folke/noice.nvim",
     optional = true,
@@ -268,7 +126,6 @@ return {
       })
     end,
   },
-  { "MunifTanjim/nui.nvim", lazy = true },
   {
     "folke/noice.nvim",
     optional = false,
@@ -292,22 +149,6 @@ return {
       "rcarriga/nvim-notify",
     },
   },
-
-  "folke/twilight.nvim",
-  {
-    "folke/zen-mode.nvim",
-    cmd = "ZenMode",
-    opts = {
-      window = { backdrop = 0.7 },
-      plugins = {
-        gitsigns = true,
-        tmux = true,
-        kitty = { enabled = false, font = "+2" },
-      },
-    },
-    keys = { { "<leader>tz", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
-  },
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   {
     "b0o/incline.nvim",
     config = function()
@@ -317,26 +158,6 @@ return {
     event = "VeryLazy",
   },
   {
-    "nvimdev/lspsaga.nvim",
-    optional = false,
-    config = function()
-      require("lspsaga").setup({})
-      vim.keymap.set("n", "<leader>lh", "<cmd>Lspsaga hover_doc<cr>", { desc = "Hover Declaration" })
-      vim.keymap.set("n", "<leader>lp", "<cmd>Lspsaga peek_definition<cr>", { desc = "Invoke Definition" })
-      vim.keymap.set("n", "<leader>ly", "<cmd>Lspsaga peek_type_definition<cr>", { desc = "Invoke Type Definition" })
-      vim.keymap.set("n", "<leader>ld", "<cmd>Lspsaga goto_definition<cr>", { desc = "Goto Definition" })
-      vim.keymap.set("n", "<leader>lt", "<cmd>Lspsaga goto_type_definition<cr>", { desc = "Goto Type Definition" })
-      vim.keymap.set("n", "<leader>li", "<cmd>Lspsaga incoming_calls<cr>", { desc = "Incoming Calls" })
-      vim.keymap.set("n", "<leader>lo", "<cmd>Lspsaga outgoing_calls<cr>", { desc = "Outgoing Calls" })
-      vim.keymap.set("n", "<leader>lf", "<cmd>Lspsaga finder<cr>", { desc = "Show References & Implementations" })
-      -- vim.keymap.set('n', '<leader>ls', '<cmd>Lspsaga outline<cr>', {desc = "Toggle the Outline by Sidebar"})
-    end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- optional
-      "nvim-tree/nvim-web-devicons", -- optional
-    },
-  },
-  {
     "topaxi/gh-actions.nvim",
     keys = {
       { "<leader>gH", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
@@ -344,38 +165,5 @@ return {
     -- optional, you can also install and use `yq` instead.
     build = "make",
     optional = true,
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-    opts = {},
-  },
-  {
-    "echasnovski/mini.pairs",
-    enabled = false,
-  },
-  {
-    "gen740/SmoothCursor.nvim",
-    config = function()
-      require("smoothcursor").setup({
-        texthl = "SmoothCursorOrange",
-      })
-    end,
-  },
-  {
-    "karb94/neoscroll.nvim",
-    config = function()
-      require("neoscroll").setup({
-        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>" },
-      })
-    end,
-  },
-  {
-    dir = "~/go/src/nui-spectre", -- Your path
-    name = "nui-spectre.nvim",
-    config = function()
-      require("nui-spectre")
-    end,
   },
 }
