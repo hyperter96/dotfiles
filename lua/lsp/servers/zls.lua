@@ -1,9 +1,10 @@
 local util = require("lspconfig.util")
 
 return {
-  setup = function(_, _)
+  setup = function(on_attach, _)
     require("lspconfig").zls.setup({
       on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
         -- zig keymap
         vim.keymap.set("n", "<leader>zr", "<cmd>Zig run<cr>", { desc = "Run Zig Current File" })
         vim.keymap.set("n", "<leader>zb", "<cmd>Zig build<cr>", { desc = "Build Current Project" })

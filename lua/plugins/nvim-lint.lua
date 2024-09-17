@@ -12,7 +12,7 @@ return {
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
-        -- markdown = { "markdownlint", "vale" },
+        markdown = { "markdownlint-cli2" },
       },
       linters = {
         eslint_d = {
@@ -44,6 +44,9 @@ return {
             end
             return vim.fs.find({ ".luacheckrc" }, { path = root, upward = true })[1]
           end,
+        },
+        ["markdownlint-cli2"] = {
+          args = { "--config", "~/.markdownlint-cli2.yaml", "--" },
         },
       },
     },

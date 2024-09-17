@@ -1,5 +1,5 @@
 local ext = require("utils.fn").ext
-local LazyVim = require("lazyvim.util")
+local LazyVim = require("lazy.util")
 
 return {
   {

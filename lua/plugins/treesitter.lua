@@ -1,12 +1,8 @@
 return {
   {
-    "b0o/SchemaStore.nvim",
-    lazy = true,
-    version = false, -- last release is way too old
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
+      opts.ensure_installed = {}
       vim.list_extend(opts.ensure_installed, {
         "bibtex",
         "cmake",
@@ -59,14 +55,8 @@ return {
         "haskell",
         "java",
       })
-      if type(opts.highlight.disable) == "table" then
-        vim.list_extend(opts.highlight.disable, { "latex" })
-      else
-        opts.highlight.disable = { "latex" }
-      end
     end,
   },
-  { "IndianBoy42/tree-sitter-just", event = "BufRead justfile", opts = {} },
   {
     "davidmh/mdx.nvim",
     config = true,

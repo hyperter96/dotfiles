@@ -31,8 +31,8 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     -- enable supertab
-    ["<Tab>"] = cmp_action.luasnip_supertab(),
-    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+    -- ["<Tab>"] = cmp_action.luasnip_supertab(),
+    -- ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
     ["<C-f>"] = cmp_action.luasnip_jump_forward(),
     ["<C-b>"] = cmp_action.luasnip_jump_backward(),
     ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion

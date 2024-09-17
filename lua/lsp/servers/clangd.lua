@@ -6,7 +6,22 @@ return {
       capabilities = {
         offsetEncoding = { "utf-16" },
       },
-      on_attach = on_attach,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        vim.keymap.set(
+          "n",
+          "<leader>Ch",
+          "<cmd>ClangdSwitchSourceHeader<cr>",
+          { desc = "Switch Source/Header (C/C++)" }
+        )
+        vim.keymap.set("n", "<leader>Cr", "<cmd>CMakeRun<cr>", { desc = "Run Selected Launchable Target" })
+        vim.keymap.set("n", "<leader>Cl", "<cmd>CMakeLauchArgs<cr>", { desc = "CMakeRun with Additional Argument" })
+        vim.keymap.set("n", "<leader>Cc", "<cmd>CMakeClean<cr>", { desc = "Clean All Targets & Deps" })
+        vim.keymap.set("n", "<leader>Cq", "<cmd>CMakeClose<cr>", { desc = "Close CMake Executor/Runner Window" })
+        vim.keymap.set("n", "<leader>Cb", "<cmd>CMakeBuild<cr>", { desc = "Compile Targets with Pre-build System" })
+        vim.keymap.set("n", "<leader>Cg", "<cmd>CMakeGenerate<cr>", { desc = "Generate Native Build System" })
+        vim.keymap.set("n", "<leader>Cd", "<cmd>CMakeDebug<cr>", { desc = "Debug Selected Launchable Target" })
+      end,
       root_dir = function(fname)
         return util.root_pattern(
           "Makefile",

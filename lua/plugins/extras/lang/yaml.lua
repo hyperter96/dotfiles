@@ -7,11 +7,6 @@ return {
 
   -- yaml schema support
   {
-    "b0o/SchemaStore.nvim",
-    lazy = true,
-    version = false, -- last release is way too old
-  },
-  {
     "cenk1cenk2/schema-companion.nvim",
     optional = false,
     dependencies = {

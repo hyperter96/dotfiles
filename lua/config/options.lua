@@ -9,6 +9,7 @@ opt.wrap = true
 opt.conceallevel = 0
 
 vim.g.maplocalleader = ","
+vim.g.mapleader = " "
 
 if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font:h11"

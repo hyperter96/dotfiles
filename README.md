@@ -43,7 +43,7 @@ After installing Maven, add the mirror such as,
 $ vi ~/.maven/conf/settings.xml
 </pre>
 
-with the following settings edited,
+With the following settings edited,
 
 ```xml
 <settings>

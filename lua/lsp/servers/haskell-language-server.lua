@@ -14,7 +14,6 @@ return {
       end
     end,
   },
-  { "L3MON4D3/LuaSnip" },
   {
     "mrcjkb/haskell-snippets.nvim",
     dependencies = { "L3MON4D3/LuaSnip" },
@@ -50,6 +49,8 @@ return {
       vim.g.haskell_tools = {
         hls = {
           capabilities = lsp_zero.get_capabilities(),
+          debug = false,
+          logfile = "",
         },
       }
 
@@ -114,15 +115,6 @@ return {
           -- Query the Repl for the type of word under the cursor
           vim.keymap.set("n", "<leader>ht", ht.repl.cword_type, { desc = "Query the Repl for the Type of Word" })
         end,
-      })
-      require("mason").setup({})
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            require("lspconfig")[server_name].setup({})
-          end,
-          hls = lsp_zero.noop,
-        },
       })
     end,
   },

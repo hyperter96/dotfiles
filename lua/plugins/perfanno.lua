@@ -2,6 +2,7 @@ return {
   {
     "t-troebst/perfanno.nvim",
     event = "VeryLazy",
+    optional = false,
     config = function()
       local perfanno = require("perfanno")
       local util = require("perfanno.util")

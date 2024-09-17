@@ -2,6 +2,7 @@ return {
   { import = "lang.init" },
   { "rcarriga/nvim-notify" },
   { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -85,6 +86,7 @@ return {
   { "kevinhwang91/promise-async" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "m4xshen/hardtime.nvim", optional = true, opts = {} },
+  { "b0o/SchemaStore.nvim", lazy = true, version = false }, -- last release is way too old
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
   { import = "lsp.servers.jdtls" },

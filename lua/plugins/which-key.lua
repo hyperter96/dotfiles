@@ -20,8 +20,11 @@ return {
           -- leetcode
           { "<localleader>L", group = "Leetcode", icon = { icon = "", color = "green" } },
 
-          -- lazy
-          { "<leader>l", group = "Lazy", icon = { icon = "󰒲", color = "blue" } },
+          -- tmux
+          { "<localleader>t", group = "tmux", icon = { icon = "", color = "orange" } },
+
+          -- LSP Functions
+          { "<leader>l", group = "LSP Functions", icon = { icon = "󰒲", color = "blue" } },
 
           -- npm
           { "<leader>n", group = "NPM", icon = { icon = "", color = "red" } },
@@ -53,8 +56,17 @@ return {
           -- test
           { "<leader>t", group = "test", icon = { icon = "󰇉", color = "sky" } },
 
+          -- octo
+          { "<leader>o", group = "octo", icon = { icon = "", color = "grey" } },
+
           -- chatGPT
           { "<leader>P", group = "ChatGPT", icon = { icon = "󰭹", color = "green" } },
+
+          -- ziglang
+          { "<leader>z", group = "Zig", icon = { icon = "", color = "orange" } },
+
+          -- markdown
+          { "<leader>m", group = "Markdown", icon = { icon = "", color = "purple" } },
         },
       },
     },

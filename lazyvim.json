@@ -1,9 +1,6 @@
 {
   "extras": [
-    "plugins.extras.lang.cmake",
-    "plugins.extras.lang.clangd",
-    "plugins.extras.lang.tex",
-    "plugins.extras.lang.zig"
+
   ],
   "news": {
     "NEWS.md": "6520"

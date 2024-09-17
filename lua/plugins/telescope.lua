@@ -1,4 +1,4 @@
-local LazyVim = require("lazyvim.util")
+local LazyVim = require("lazy.util")
 
 return {
   {
@@ -96,7 +96,7 @@ return {
   {
     "folke/todo-comments.nvim",
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = "LazyFile",
+    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     opts = {},
     -- stylua: ignore
     keys = {

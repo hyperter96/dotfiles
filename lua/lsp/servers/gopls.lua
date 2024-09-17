@@ -1,8 +1,9 @@
 return {
-  setup = function(_, _)
+  setup = function(on_attach, _)
     require("lspconfig").gopls.setup({
       filetypes = { "go", "gomod", "gowork", "gotmpl" },
       on_attach = function(client, bufnr) -- on_attach for gopls
+        on_attach(client, bufnr)
         -- your special on attach here
         if not client.server_capabilities.semanticTokensProvider then
           client.resolved_capabilities.document_formatting = false
