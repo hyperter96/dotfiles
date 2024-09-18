@@ -13,6 +13,7 @@ return {
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
         markdown = { "markdownlint-cli2" },
+        python = { "pylint" },
       },
       linters = {
         eslint_d = {

@@ -44,6 +44,9 @@ return {
           -- kulala
           { "<localleader>R", group = "Rest", icon = { icon = "󰒲", color = "blue" } },
 
+          -- gpt
+          { "<localleader>g", group = "GPT", icon = { icon = "", color = "grey" } },
+
           -- Rust
           { "<leader>r", group = "Rust", icon = { icon = "󱘗", color = "red" } },
 

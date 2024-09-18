@@ -13,11 +13,11 @@ if not (mason_status_ok and mason_tool_installer_ok and cmp_nvim_lsp_status_ok a
   return
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.foldingRange = {
+--   dynamicRegistration = false,
+--   lineFoldingOnly = true,
+-- }
 
 mason.setup({
   ui = {
@@ -89,6 +89,7 @@ local on_attach = function(client, bufnr)
     "gopls",
     "lua_ls",
     "clangd",
+    "pylsp",
   }, client.name) then
     lsp_format.on_attach(client)
   end
@@ -156,7 +157,7 @@ local servers = {
   "vue-language-server",
   "golangci-lint-langserver",
   "ltex-ls",
-  -- "python-lsp-server",
+  "python-lsp-server",
   "css-lsp",
   "clangd",
   "zls",

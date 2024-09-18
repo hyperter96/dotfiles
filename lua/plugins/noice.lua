@@ -1,4 +1,3 @@
-local LazyVim = require("lazyvim.util")
 return {
   {
     "folke/noice.nvim",
@@ -49,45 +48,5 @@ return {
       })
       return opts
     end,
-  },
-  {
-    "folke/noice.nvim",
-    optional = false,
-    event = "VeryLazy",
-    opts = {
-      lsp = {
-        hover = {
-          enabled = false,
-        },
-        signature = {
-          enabled = false,
-        },
-      },
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    },
-  },
-  {
-    "b0o/incline.nvim",
-    config = function()
-      require("incline").setup()
-    end,
-    -- Optional: Lazy load Incline
-    event = "VeryLazy",
-  },
-  {
-    "topaxi/gh-actions.nvim",
-    keys = {
-      { "<leader>gH", "<cmd>GhActions<cr>", desc = "Open Github Actions" },
-    },
-    -- optional, you can also install and use `yq` instead.
-    build = "make",
-    optional = true,
   },
 }

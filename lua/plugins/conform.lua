@@ -5,7 +5,7 @@ return {
     optional = false,
     opts = {
       formatters_by_ft = {
-        ["python"] = { "isort", "black" },
+        python = { "isort", "black" },
         lua = { "stylua" },
         javascript = { "prettierd", "prettier" },
         javascriptreact = { "dprint" },

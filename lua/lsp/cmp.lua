@@ -7,7 +7,7 @@ local cmp_action = require("lsp-zero").cmp_action()
 -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 require("luasnip.loaders.from_snipmate").lazy_load()
 require("luasnip.loaders.from_snipmate").lazy_load({
-  paths = vim.fn.stdpath("config") .. "/snippets",
+  paths = { vim.fn.stdpath("config") .. "/snippets" },
 })
 
 luasnip.setup({
@@ -21,7 +21,6 @@ cmp.setup({
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
-    { name = "py-requirements" },
   },
   snippet = {
     expand = function(args)
@@ -56,11 +55,13 @@ cmp.setup.cmdline(":", {
   sources = cmp.config.sources({
     { name = "path" },
   }, {
-    {
-      name = "cmdline",
-      option = {
-        ignore_cmds = { "Man", "!" },
-      },
-    },
+    { name = "cmdline" },
   }),
+})
+
+cmp.setup.cmdline({ "/", "?" }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+  },
 })

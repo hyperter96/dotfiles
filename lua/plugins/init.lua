@@ -1,6 +1,5 @@
 return {
   { import = "lang.init" },
-  { "rcarriga/nvim-notify" },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   {
@@ -69,6 +68,7 @@ return {
   { "tpope/vim-surround" },
   { "tpope/vim-rhubarb" },
   { "tpope/vim-eunuch" },
+  { "b0o/incline.nvim", event = "VeryLazy" },
   { "guns/vim-sexp", ft = { "clojure" } },
   { "romainl/vim-cool" },
   { "nvim-tree/nvim-web-devicons" },
@@ -85,7 +85,7 @@ return {
   { "sindrets/diffview.nvim" },
   { "kevinhwang91/promise-async" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  { "m4xshen/hardtime.nvim", optional = true, opts = {} },
+  { "m4xshen/hardtime.nvim", optional = false, opts = {} },
   { "b0o/SchemaStore.nvim", lazy = true, version = false }, -- last release is way too old
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
