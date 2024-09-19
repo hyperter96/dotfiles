@@ -85,7 +85,7 @@ return {
   { "sindrets/diffview.nvim" },
   { "kevinhwang91/promise-async" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  { "m4xshen/hardtime.nvim", optional = false, opts = {} },
+  { "m4xshen/hardtime.nvim", optional = true, opts = {} },
   { "b0o/SchemaStore.nvim", lazy = true, version = false }, -- last release is way too old
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
@@ -111,10 +111,7 @@ return {
   -- lsp
   { import = "lazyvim.plugins.extras.lsp.none-ls" },
   -- lang
-  { import = "lazyvim.plugins.extras.lang.ansible" },
-  { import = "lazyvim.plugins.extras.lang.docker" },
   { import = "lazyvim.plugins.extras.lang.git" },
   { import = "lazyvim.plugins.extras.lang.json" },
-  { import = "lazyvim.plugins.extras.lang.helm" },
   { import = "lazyvim.plugins.extras.lang.toml" },
 }

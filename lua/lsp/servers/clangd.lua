@@ -3,6 +3,7 @@ local util = require("lspconfig.util")
 return {
   setup = function(on_attach, _)
     require("lspconfig").clangd.setup({
+      -- filetypes = { "c", "cpp", "objc", "objcpp" },
       capabilities = {
         offsetEncoding = { "utf-16" },
       },

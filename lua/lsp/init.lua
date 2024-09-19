@@ -13,11 +13,11 @@ if not (mason_status_ok and mason_tool_installer_ok and cmp_nvim_lsp_status_ok a
   return
 end
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.foldingRange = {
---   dynamicRegistration = false,
---   lineFoldingOnly = true,
--- }
+local normal_capabilities = cmp_nvim_lsp.default_capabilities()
+normal_capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 
 mason.setup({
   ui = {
@@ -100,6 +100,12 @@ local on_attach = function(client, bufnr)
   end
 end
 
+lsp_zero.extend_lspconfig({
+  sign_text = true,
+  lsp_attach = on_attach,
+  capabilities = normal_capabilities,
+})
+
 -- These tools are automatically installed by Mason.
 -- We then iterate over the LSPs (only) and load their relevant
 -- configuration files, which are stored in lua/lsp/servers,
@@ -160,6 +166,7 @@ local servers = {
   "python-lsp-server",
   "css-lsp",
   "clangd",
+  "protolint",
   "zls",
   -- "yaml-language-server",
 }
@@ -176,8 +183,6 @@ local linters = {
   "black",
   "eslint_d",
   "isort",
-  "protolint",
-  "ansible-lint",
   "hadolint",
   "markdownlint-cli2",
   "cmakelint",
@@ -204,21 +209,21 @@ mason_tool_installer.setup({
 })
 
 -- Setup each server
-local normal_capabilities = vim.lsp.protocol.make_client_capabilities()
-local capabilities = cmp_nvim_lsp.default_capabilities(normal_capabilities)
+-- local capabilities = cmp_nvim_lsp.default_capabilities(normal_capabilities)
+
 for _, s in pairs(servers) do
   local server_config_ok, mod = pcall(require, "lsp.servers." .. s)
   if not server_config_ok then
     require("notify")("The LSP '" .. s .. "' does not have a config.", "warn")
   else
-    lsp_zero.extend_lspconfig({
-      sign_text = true,
-      lsp_attach = on_attach,
-      capabilities = capabilities,
-    })
-    mod.setup(on_attach, capabilities)
+    mod.setup(on_attach, normal_capabilities)
   end
 end
+
+require("lspconfig").protobuf_language_server.setup({
+  on_attach = on_attach,
+  capabilities = normal_capabilities,
+})
 
 -- Global diagnostic settings
 vim.diagnostic.config({
