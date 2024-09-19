@@ -29,18 +29,23 @@ return {
     lazy = false, -- This plugin is already lazy
     ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
     dependencies = {
-      { "nvim-telescope/telescope.nvim", optional = true },
+      { "nvim-telescope/telescope.nvim", optional = false },
     },
     config = function()
-      local ok, telescope = pcall(require, "telescope")
-      if ok then
-        telescope.load_extension("ht")
-      end
+      -- local ok, telescope = pcall(require, "telescope")
+      -- if ok then
+      --   telescope.load_extension("ht")
+      -- end
       local lsp_zero = require("lsp-zero")
 
       -- lsp_zero.extend_lspconfig({
       --   capabilities = require("cmp_nvim_lsp").default_capabilities(),
       -- })
+
+      local ok, telescope = pcall(require, "telescope")
+      if ok then
+        telescope.load_extension("ht")
+      end
 
       ---
       -- Setup haskell LSP

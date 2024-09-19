@@ -3,7 +3,7 @@ local util = require("lspconfig.util")
 return {
   setup = function(on_attach, _)
     require("lspconfig").clangd.setup({
-      -- filetypes = { "c", "cpp", "objc", "objcpp" },
+      filetypes = { "c", "cpp", "objc", "objcpp" },
       capabilities = {
         offsetEncoding = { "utf-16" },
       },
@@ -40,10 +40,11 @@ return {
         "clangd",
         "--background-index",
         "--clang-tidy",
-        "--header-insertion=iwyu",
+        "--header-insertion=never",
         "--completion-style=detailed",
         "--function-arg-placeholders",
         "--fallback-style=llvm",
+        "--limit-results=1",
       },
       flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
       init_options = {

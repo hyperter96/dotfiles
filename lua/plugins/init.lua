@@ -2,23 +2,14 @@ return {
   { import = "lang.init" },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
+  { "davidosomething/format-ts-errors.nvim" },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      { "davidosomething/format-ts-errors.nvim" },
-    },
     opts = {
       inlay_hints = {
         enabled = false,
       },
       diagnostics = { virtual_text = { prefix = "icons" } },
-      capabilities = {
-        workspace = {
-          didChangeWatchedFiles = {
-            dynamicRegistration = false,
-          },
-        },
-      },
       setup = {
         hls = function()
           return true
@@ -43,15 +34,7 @@ return {
   { "onsails/lspkind-nvim" }, -- vs-code like pictograms
   { "MunifTanjim/nui.nvim" },
   { "hrsh7th/nvim-cmp", event = "InsertEnter" },
-  {
-    "Saecki/crates.nvim",
-    event = { "BufRead Cargo.toml" },
-    opts = {
-      completion = {
-        cmp = { enabled = true },
-      },
-    },
-  },
+  { "Saecki/crates.nvim", event = { "BufRead Cargo.toml" } },
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
   { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -90,7 +73,7 @@ return {
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
   { import = "lsp.servers.jdtls" },
-  { import = "lsp.servers.rustaceanvim" },
+  { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
   { import = "lsp.servers.haskell-language-server" },
 
   -- coding
@@ -112,6 +95,4 @@ return {
   { import = "lazyvim.plugins.extras.lsp.none-ls" },
   -- lang
   { import = "lazyvim.plugins.extras.lang.git" },
-  { import = "lazyvim.plugins.extras.lang.json" },
-  { import = "lazyvim.plugins.extras.lang.toml" },
 }

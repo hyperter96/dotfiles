@@ -4,8 +4,10 @@ local function rDir(fname)
 end
 
 return {
-  setup = function(_, __)
+  setup = function(on_attach, capabilities)
     require("lspconfig").texlab.setup({
+      on_attach = on_attach,
+      capabilities = capabilities,
       cmd = {
         "texlab",
       },
