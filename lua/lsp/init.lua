@@ -166,7 +166,7 @@ local servers = {
   "zls",
   "taplo",
   "json-lsp",
-  "yaml-language-server",
+  -- "yaml-language-server",
 }
 
 local formatters = {
@@ -228,7 +228,17 @@ require("lspconfig").protobuf_language_server.setup({
   capabilities = lsp_zero.get_capabilities(),
 })
 
+require("lsp.servers.jdtls").setup({
+  on_attach = on_attach,
+  capabilities = lsp_zero.get_capabilities(),
+})
+
 require("lsp.servers.rustaceanvim").setup({
+  on_attach = on_attach,
+  capabilities = lsp_zero.get_capabilities(),
+})
+
+require("lsp.servers.haskell.tools").setup({
   on_attach = on_attach,
   capabilities = lsp_zero.get_capabilities(),
 })

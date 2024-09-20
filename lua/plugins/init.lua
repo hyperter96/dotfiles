@@ -72,9 +72,24 @@ return {
   { "b0o/SchemaStore.nvim", lazy = true, version = false }, -- last release is way too old
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
-  { import = "lsp.servers.jdtls" },
+  { "mfussenegger/nvim-jdtls", ft = { "java" } },
+  -- { import = "lsp.servers.jdtls" },
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
-  { import = "lsp.servers.haskell-language-server" },
+  {
+    "mrcjkb/haskell-tools.nvim",
+    version = "^2",
+    lazy = false,
+    ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+  },
+  {
+    "luc-tielen/telescope_hoogle",
+    ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
+    dependencies = {
+      { "nvim-telescope/telescope.nvim" },
+    },
+  },
+  { "mrcjkb/haskell-snippets.nvim", ft = { "haskell", "lhaskell", "cabal", "cabalproject" } },
+  -- { import = "lsp.servers.haskell-language-server" },
 
   -- coding
   { import = "lazyvim.plugins.extras.coding.neogen" },
