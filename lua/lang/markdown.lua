@@ -1,3 +1,4 @@
+local LazyVim = require("lazyvim.util")
 return {
   {
     "iamcco/markdown-preview.nvim",
@@ -146,8 +147,6 @@ return {
   {
     "barreiroleo/ltex_extra.nvim",
     ft = { "markdown", "tex" },
-    dependencies = { "neovim/nvim-lspconfig" },
-    -- yes, you can use the opts field, just I'm showing the setup explicitly
     config = function()
       require("ltex_extra").setup({
         load_langs = { "zh-CN", "en-US" }, -- en-US as default
@@ -157,9 +156,7 @@ return {
         log_level = "none",
         server_opts = {
           filetypes = { "markdown", "tex", "lua" },
-          on_attach = function(client, bufnr)
-            -- your on_attach process
-          end,
+          on_attach = function(client, bufnr) end,
           settings = {
             ltex = {
               enabled = { "markdown", "tex", "lua" },

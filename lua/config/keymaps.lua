@@ -12,7 +12,6 @@ vim.keymap.del("n", "<leader>L")
 vim.keymap.del("n", "<leader>sp")
 vim.keymap.del("n", "<leader>sW")
 vim.keymap.del("n", "<leader>sw")
-vim.keymap.del({ "n", "x" }, "y")
 
 -- switch the themes
 vim.keymap.set("n", "<c-t>", "<cmd>Telescope themes<cr>")

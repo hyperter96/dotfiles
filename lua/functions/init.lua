@@ -86,15 +86,17 @@ return {
     else
       f = io.popen(string.format("/bin/bash %1s/%2s %3s", nvim_scripts_dir, script_name, args))
     end
-    local output = f:read("*a")
-    f:close()
-    return output
+    if f ~= nil then
+      local output = f:read("*a")
+      f:close()
+      return output
+    end
   end,
   stash = function(name)
     vim.fn.system("git stash -u -m " .. name)
   end,
   buf_only = function()
-    local option = vim.api.nvim_buf_get_option
+    local option = vim.api.nvim__get_option_value
     local del_non_modifiable = vim.g.bufonly_delete_non_modifiable or false
 
     local cur = vim.api.nvim_get_current_buf()
@@ -117,7 +119,7 @@ return {
     require("notify")("BufOnly: " .. deleted .. " deleted buffer(s), " .. modified .. " modified buffer(s)")
   end,
   screenshot = function()
-    local async_job_ok, job = pcall(require, 'plenary.job')
+    local async_job_ok, job = pcall(require, "plenary.job")
     if not async_job_ok then
       require("notify")("Plenary is not installed!", "error")
     end
@@ -125,8 +127,8 @@ return {
     local language = vim.bo.filetype
     local line_number = vim.api.nvim_win_get_cursor(0)[1]
     local create_screenshot = job:new({
-      command = 'silicon',
-      args = { '--from-clipboard', '-l', language, '--to-clipboard', '--line-offset', line_number },
+      command = "silicon",
+      args = { "--from-clipboard", "-l", language, "--to-clipboard", "--line-offset", line_number },
       on_exit = function(_, exit_code)
         if exit_code ~= 0 then
           require("notify")("Could not create screenshot! Do you have silicon installed?", "error")

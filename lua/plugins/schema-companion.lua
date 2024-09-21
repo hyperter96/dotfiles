@@ -1,7 +1,7 @@
 return {
   {
     "cenk1cenk2/schema-companion.nvim",
-    optional = true,
+    optional = false,
     config = function()
       require("schema-companion").setup({
         -- if you have telescope you can register the extension

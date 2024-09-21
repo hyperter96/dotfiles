@@ -1,3 +1,4 @@
+local Lazyvim = require("lazyvim.util")
 return {
   {
     "pwntester/octo.nvim",

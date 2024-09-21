@@ -17,6 +17,7 @@ luasnip.setup({
 
 cmp.setup({
   sources = {
+    { name = "lazydev" },
     { name = "nvim_lsp" },
     { name = "luasnip" }, -- snippets
     { name = "buffer" }, -- text within current buffer

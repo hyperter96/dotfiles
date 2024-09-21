@@ -1,4 +1,18 @@
 return {
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        -- Only load the lazyvim library when the `LazyVim` global is found
+        { path = "LazyVim", words = { "LazyVim" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true },
   { import = "lang.init" },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
@@ -9,6 +23,7 @@ return {
       inlay_hints = {
         enabled = false,
       },
+      document_highlight = { enabled = false },
       diagnostics = { virtual_text = { prefix = "icons" } },
       setup = {
         hls = function()
@@ -28,12 +43,15 @@ return {
         end,
       },
     },
+    config = function()
+      require("lsp")
+    end,
   },
   { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
   { "onsails/lspkind-nvim" }, -- vs-code like pictograms
   { "MunifTanjim/nui.nvim" },
-  { "hrsh7th/nvim-cmp", event = "InsertEnter" },
+  { "hrsh7th/nvim-cmp", event = "InsertEnter", lazy = true },
   { "Saecki/crates.nvim", event = { "BufRead Cargo.toml" } },
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
   { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },
@@ -52,7 +70,6 @@ return {
   { "tpope/vim-rhubarb" },
   { "tpope/vim-eunuch" },
   { "b0o/incline.nvim", event = "VeryLazy" },
-  { "guns/vim-sexp", ft = { "clojure" } },
   { "romainl/vim-cool" },
   { "nvim-tree/nvim-web-devicons" },
   { "lambdalisue/glyph-palette.vim" },
@@ -73,7 +90,6 @@ return {
   { "nvimdev/lspsaga.nvim", optional = false },
   -- lsp for java, rust, haskell
   { "mfussenegger/nvim-jdtls", ft = { "java" } },
-  -- { import = "lsp.servers.jdtls" },
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
   {
     "mrcjkb/haskell-tools.nvim",
@@ -83,31 +99,10 @@ return {
   },
   {
     "luc-tielen/telescope_hoogle",
+    lazy = true,
     ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
-    },
   },
   { "mrcjkb/haskell-snippets.nvim", ft = { "haskell", "lhaskell", "cabal", "cabalproject" } },
-  -- { import = "lsp.servers.haskell-language-server" },
-
-  -- coding
-  { import = "lazyvim.plugins.extras.coding.neogen" },
-  { import = "lazyvim.plugins.extras.coding.yanky" },
-  { import = "lazyvim.plugins.extras.coding.mini-surround" },
-  { import = "lazyvim.plugins.extras.coding.mini-comment" },
-
-  -- editor
-  { import = "lazyvim.plugins.extras.editor.leap" },
-  { import = "lazyvim.plugins.extras.editor.navic" },
-  { import = "lazyvim.plugins.extras.editor.illuminate" },
-  { import = "lazyvim.plugins.extras.editor.telescope" },
-
-  -- formatting
-  { import = "lazyvim.plugins.extras.formatting.prettier" },
-
   -- lsp
   { import = "lazyvim.plugins.extras.lsp.none-ls" },
-  -- lang
-  { import = "lazyvim.plugins.extras.lang.git" },
 }

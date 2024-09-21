@@ -1,6 +1,7 @@
 return {
   "gelguy/wilder.nvim",
   optional = true,
+  event = "CmdlineEnter",
   dependencies = "romgrk/fzy-lua-native",
   build = ":UpdateRemotePlugins",
   config = function()

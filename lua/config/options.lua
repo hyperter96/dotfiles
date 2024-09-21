@@ -7,7 +7,7 @@ opt.wrap = true
 
 -- conceal level
 opt.conceallevel = 0
-
+opt.relativenumber = false
 vim.g.maplocalleader = ","
 vim.g.mapleader = " "
 

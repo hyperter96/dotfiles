@@ -1,14 +1,13 @@
 local util = require("lspconfig.util")
 
 return {
-  setup = function(on_attach, _)
+  setup = function(on_attach, capabilities)
     require("lspconfig").clangd.setup({
       filetypes = { "c", "cpp", "objc", "objcpp" },
-      capabilities = {
-        offsetEncoding = { "utf-16" },
-      },
+      capabilities = capabilities,
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
+
         vim.keymap.set(
           "n",
           "<leader>Ch",

@@ -1,5 +1,4 @@
 local lsp_zero = require("lsp-zero")
-
 local lsp_format_ok, lsp_format = pcall(require, "lsp-format")
 local u = require("functions.utils")
 -- This is the callback function that runs after LSP attaches which configures the LSP,
@@ -10,18 +9,17 @@ local on_attach = function(client, bufnr)
   end
 
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
   -- Debounce by 300ms by default
   -- client.config.flags.debounce_text_changes = 300
 
   -- This will set up formatting for the attached LSPs
   client.server_capabilities.documentFormattingProvider = true
+  client.server_capabilities.documentSymbolProvider = true
 
   -- Turn off semantic tokens (too slow)
   client.server_capabilities.semanticTokensProvider = nil
 
   -- Formatting for Vue handled by Eslint
-  -- Formatting for Clojure handled by custom ZPrint function, see lua/lsp/servers/clojure-lsp.lua
   if u.has_value({
     "eslint",
     "gopls",
@@ -29,7 +27,9 @@ local on_attach = function(client, bufnr)
     "clangd",
     "pylsp",
   }, client.name) then
-    lsp_format.on_attach(client)
+    if client.supports_method("textDocument/formatting") then
+      lsp_format.on_attach(client)
+    end
   end
 
   -- This is ripped off from https://github.com/kabouzeid/dotfiles, it's for tailwind preview support
@@ -38,10 +38,20 @@ local on_attach = function(client, bufnr)
   end
 end
 
+-- extend ufo with lsp_zero
+local lsp_capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
+  textDocument = {
+    foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    },
+  },
+})
+
 lsp_zero.extend_lspconfig({
   sign_text = true,
   lsp_attach = on_attach,
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  capabilities = lsp_capabilities,
 })
 
 local map_opts = { noremap = true, silent = true, nowait = true }
@@ -63,6 +73,7 @@ lsp_format.setup({
 
 local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
+
 mason.setup({
   ui = {
     icons = {
@@ -166,7 +177,8 @@ local servers = {
   "zls",
   "taplo",
   "json-lsp",
-  -- "yaml-language-server",
+  "jdtls",
+  "yaml-language-server",
 }
 
 local formatters = {
@@ -228,11 +240,6 @@ require("lspconfig").protobuf_language_server.setup({
   capabilities = lsp_zero.get_capabilities(),
 })
 
-require("lsp.servers.jdtls").setup({
-  on_attach = on_attach,
-  capabilities = lsp_zero.get_capabilities(),
-})
-
 require("lsp.servers.rustaceanvim").setup({
   on_attach = on_attach,
   capabilities = lsp_zero.get_capabilities(),
@@ -254,22 +261,6 @@ vim.diagnostic.config({
     border = "solid",
     focusable = true,
   },
-})
-
--- Change Error Signs in Gutter
-local signs = { Error = "✘", Warn = " ", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
--- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "solid",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = "solid",
 })
 
 require("lsp.servers.crates")

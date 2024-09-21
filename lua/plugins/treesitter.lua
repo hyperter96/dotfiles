@@ -1,6 +1,7 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufRead", "BufNewFile" }, -- 当读取文件或创建新文件时加载
     opts = function(_, opts)
       opts.ensure_installed = {}
       vim.list_extend(opts.ensure_installed, {
@@ -13,6 +14,7 @@ return {
         "css",
         "devicetree",
         "git_config",
+        "git_rebase",
         "gitattributes",
         "gitcommit",
         "gitignore",

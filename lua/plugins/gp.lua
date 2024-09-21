@@ -9,6 +9,7 @@ end
 
 return {
   "robitx/gp.nvim",
+  lazy = true,
   config = function()
     require("gp").setup()
 
