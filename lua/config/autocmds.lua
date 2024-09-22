@@ -25,16 +25,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
--- Run gofmt + goimport on save
--- local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   pattern = "*.go",
---   callback = function()
---     require("go.format").goimport()
---   end,
---   group = format_sync_grp,
--- })
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
@@ -87,3 +77,8 @@ augroups.yankpost = {
     end,
   },
 }
+
+vim.api.nvim_set_hl(0, "Lime", { bg = "Lime" })
+vim.api.nvim_set_hl(0, "Emerald", { bg = "#047857" })
+vim.api.nvim_set_hl(0, "Indigo", { bg = "#3730a3" })
+vim.api.nvim_set_hl(0, "Blue", { bg = "#1e40af" })

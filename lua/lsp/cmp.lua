@@ -29,6 +29,12 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+    completion = cmp.config.window.bordered({
+      winhighlight = "CursorLine:Blue",
+    }),
+    documentation = cmp.config.window.bordered(),
+  },
   mapping = cmp.mapping.preset.insert({
     -- enable supertab
     -- ["<Tab>"] = cmp_action.luasnip_supertab(),

@@ -35,6 +35,7 @@ func main() {
 	p1 := &Person{Name: "Peter", Id: 1}
 	// p2 := Person{name: "Alex", id: 2}
 	p1.eat("stuff")
+	p1.play("toy")
 	// var p2 *Person
 	fmt.Println(FindPerson(option.Some(p1)))
 	fmt.Println(FindPerson(option.None[*Person]()))

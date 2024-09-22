@@ -220,12 +220,6 @@ mason_tool_installer.setup({
 })
 
 -- Setup each server
--- local capabilities = cmp_nvim_lsp.default_capabilities(normal_capabilities)
--- local normal_capabilities = cmp_nvim_lsp.default_capabilities()
--- normal_capabilities.textDocument.foldingRange = {
---   dynamicRegistration = false,
---   lineFoldingOnly = true,
--- }
 for _, s in pairs(servers) do
   local server_config_ok, mod = pcall(require, "lsp.servers." .. s)
   if not server_config_ok then

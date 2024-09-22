@@ -22,6 +22,14 @@ return {
         end
 
         -- gopls
+        -- local wk = require("which-key")
+        -- wk.add({
+        --   { "<leader>G", group = "Go", icon = { icon = "󰟓 ", color = "blue" } },
+        --   { "<leader>Ga", group = "Add", icon = { icon = "󰟓 ", color = "blue" } },
+        --   { "<leader>Gt", group = "Test", icon = { icon = "󰟓 ", color = "blue" } },
+        --   { "<leader>GD", group = "Debug", icon = { icon = "󰟓 ", color = "blue" } },
+        --   { "<leader>GG", group = "Ginkgo", icon = { icon = "󰟓 ", color = "blue" } },
+        -- })
         vim.keymap.set("n", "<leader>Gi", "<cmd>GoInstallBinaries<cr>", { desc = "Install Binaries" })
         vim.keymap.set("n", "<leader>Gaa", "<cmd>GoAddTest<cr>", { desc = "Add Test" })
         vim.keymap.set("n", "<leader>GaA", "<cmd>GoAddAllTest<cr>", { desc = "Add All Tests" })

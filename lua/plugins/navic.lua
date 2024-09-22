@@ -4,7 +4,7 @@ return {
   -- etc - in the statusline.
   {
     "SmiteshP/nvim-navic",
-    optional = true,
+    optional = false,
     lazy = true,
     init = function()
       vim.g.navic_silence = true
