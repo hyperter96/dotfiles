@@ -1,4 +1,5 @@
 local opt = vim.opt
+opt.guifont = "Hack Nerd Font:h11"
 
 -- support Spanish & Chinese character spell
 opt.spelllang = { "en", "es", "cjk" }

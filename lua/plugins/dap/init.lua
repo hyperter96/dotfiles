@@ -25,7 +25,7 @@ return {
     -- Debuggers are installed via https://github.com/jayp0521/mason-nvim-dap.nvim
     mason.setup()
     mason_dap.setup({
-      ensure_installed = { "delve", "node2", "js" },
+      ensure_installed = { "javadbg", "javatest", "delve", "node2", "js", "codelldb", "haskell", "python" },
       automatic_installation = true,
     })
 
@@ -51,62 +51,7 @@ return {
     -- ╰──────────────────────────────────────────────────────────╯
     vim.fn.sign_define("DapBreakpoint", { text = "🐞" })
 
-    -- Opens up the debugger tab if it's not currently active
-    local function dap_start_debugging()
-      local has_dap_repl = false
-      for _, buf in ipairs(vim.fn.tabpagebuflist()) do
-        if vim.bo[buf].filetype == "dap-repl" then
-          has_dap_repl = true
-          break
-        end
-      end
-
-      if not has_dap_repl then
-        vim.cmd("tabedit %")
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", false, true, true), "n", false)
-        ui.toggle({})
-      end
-      dap.continue({})
-    end
-    vim.keymap.set("n", "<localleader>ds", dap_start_debugging)
-
-    -- Detaches the debugger
-    local function dap_end_debug()
-      dap.disconnect({ terminateDebuggee = false }, function()
-        require("notify")("Debugger detached", vim.log.levels.INFO)
-      end)
-    end
-    vim.keymap.set("n", "<localleader>de", dap_end_debug)
-
-    -- Kills the debug process
-    local function dap_kill_debug_process()
-      dap.clear_breakpoints()
-      dap.terminate({}, { terminateDebuggee = true }, function()
-        vim.cmd.bd()
-        u.resize_vertical_splits()
-        require("notify")("Debug process killed", vim.log.levels.WARN)
-      end)
-    end
-    vim.keymap.set("n", "<localleader>dk", dap_kill_debug_process)
-
-    -- Bulk clear all breakpoints
-    local function dap_clear_breakpoints()
-      dap.clear_breakpoints()
-      require("notify")("Breakpoints cleared", vim.log.levels.WARN)
-    end
-
-    vim.keymap.set("n", "<localleader>dC", dap_clear_breakpoints)
-
-    -- Other keybindings
-    vim.keymap.set("n", "<localleader>dl", require("dap.ui.widgets").hover)
-    vim.keymap.set("n", "<localleader>dc", dap.continue)
-    vim.keymap.set("n", "<localleader>db", dap.toggle_breakpoint)
-    vim.keymap.set("n", "<localleader>dn", dap.step_over)
-    vim.keymap.set("n", "<localleader>di", dap.step_into)
-    vim.keymap.set("n", "<localleader>do", dap.step_out)
-    vim.keymap.set("n", "<localleader>dr", function()
-      require("dap").run_last()
-    end) -- Repeat last command, e.g. attach to PID
+    require("plugins.dap.keybindings")
 
     -- UI Settings
     ui.setup({

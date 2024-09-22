@@ -2,24 +2,24 @@
 local M = {}
 local jsOrTs = {
   {
-    type = 'node2',
-    name = 'Launch',
-    request = 'launch',
-    program = '${file}',
+    type = "node2",
+    name = "Launch",
+    request = "launch",
+    program = "${file}",
     cwd = vim.fn.getcwd(),
     sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
+    protocol = "inspector",
+    console = "integratedTerminal",
   },
   {
-    type = 'node2',
-    name = 'Attach',
-    request = 'attach',
-    program = '${file}',
+    type = "node2",
+    name = "Attach",
+    request = "attach",
+    program = "${file}",
     cwd = vim.fn.getcwd(),
     sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
+    protocol = "inspector",
+    console = "integratedTerminal",
   },
   {
     name = "Vitest Debug",
@@ -32,6 +32,49 @@ local jsOrTs = {
     smartStep = true,
     console = "integratedTerminal",
     skipFiles = { "<node_internals>/**", "node_modules/**" },
+  },
+}
+
+local rust = {
+  {
+    name = "Launch Rust Program",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}
+
+local codelldb = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+  },
+}
+
+local haskell = {
+  {
+    type = "haskell",
+    request = "launch",
+    name = "Launch Haskell Program",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = true,
+    args = {},
   },
 }
 
@@ -50,31 +93,31 @@ local function get_go_args()
     local i = 1
     local len = #input
     local in_quote = false
-    local quote_char = ''
+    local quote_char = ""
     local escaped = false
-    local current_arg = ''
+    local current_arg = ""
 
     while i <= len do
       local c = input:sub(i, i)
       if escaped then
         current_arg = current_arg .. c
         escaped = false
-      elseif c == '\\' then
+      elseif c == "\\" then
         escaped = true
       elseif in_quote then
         if c == quote_char then
           in_quote = false
-          quote_char = ''
+          quote_char = ""
         else
           current_arg = current_arg .. c
         end
       elseif c == '"' or c == "'" then
         in_quote = true
         quote_char = c
-      elseif c:match('%s') then
+      elseif c:match("%s") then
         if #current_arg > 0 then
           table.insert(args, current_arg)
-          current_arg = ''
+          current_arg = ""
         end
       else
         current_arg = current_arg .. c
@@ -124,23 +167,23 @@ local go = {
     name = "Attach To PID",
     mode = "local",
     request = "attach",
-    processId = require('plugins.dap.utils').pick_process,
+    processId = require("plugins.dap.utils").pick_process,
   },
   {
     type = "go",
     name = "Attach To Port (:9080)",
     mode = "remote",
     request = "attach",
-    port = "9080"
+    port = "9080",
   },
 }
 
 local lua = {
   {
-    type = 'nlua',
-    request = 'attach',
+    type = "nlua",
+    request = "attach",
     name = "Attach to running Neovim instance",
-  }
+  },
 }
 
 return {
@@ -148,6 +191,10 @@ return {
     dap.configurations = {
       javascript = jsOrTs,
       typescript = jsOrTs,
+      c = codelldb,
+      cpp = codelldb,
+      haskell = haskell,
+      rust = rust,
       javascriptreact = chrome_debugger,
       vue = chrome_debugger,
       go = go,

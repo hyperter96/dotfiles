@@ -8,6 +8,10 @@ return {
       spec = {
         {
           mode = { "n", "v" },
+
+          -- debug
+          { "<leader>d", group = "Debug", icon = { icon = "", color = "red" } },
+
           -- C++
           { "<leader>C", group = "C++", icon = { icon = "󰙲", color = "blue" } },
 
