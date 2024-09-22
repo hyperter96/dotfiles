@@ -3,15 +3,25 @@ local function keymapOptions(desc)
     noremap = true,
     silent = true,
     nowait = true,
-    desc = "GPT prompt " .. desc,
+    desc = "GPT prompt: " .. desc,
   }
 end
 
 return {
   "robitx/gp.nvim",
-  lazy = true,
   config = function()
-    require("gp").setup()
+    local conf = {
+      providers = {
+        openai = {
+          endpoint = "https://api.openai.com/v1/chat/completions",
+          secret = os.getenv("OPENAI_API_KEY"),
+        },
+        ollama = {
+          endpoint = "http://localhost:11434/v1/chat/completions",
+        },
+      },
+    }
+    require("gp").setup(conf)
 
     -- Update global context for repo
     vim.keymap.set("v", "<localleader>gX", ":<C-u>'<,'>GpContext<cr>", keymapOptions("Visual Toggle Context"))

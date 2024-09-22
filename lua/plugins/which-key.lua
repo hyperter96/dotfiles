@@ -74,6 +74,9 @@ return {
 
           -- markdown
           { "<leader>m", group = "Markdown", icon = { icon = "", color = "purple" } },
+
+          -- yank
+          { "<leader>y", group = "Yank", icon = { icon = "", color = "green" } },
         },
       },
     },
