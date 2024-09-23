@@ -18,6 +18,11 @@ return {
   { "williamboman/mason-lspconfig.nvim" },
   { "davidosomething/format-ts-errors.nvim" },
   {
+    "dmmulroy/ts-error-translator.nvim",
+    config = true,
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = {

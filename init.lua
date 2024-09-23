@@ -1,6 +1,5 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-require("lsp.handlers")
 require("plugins.dap")
 
 require("git-helpers")

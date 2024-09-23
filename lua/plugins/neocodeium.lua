@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   enabled = true,
   config = function()
-    local filetypes = { "python", "java", "cpp", "rust", "go", "haskell", "typescript", "javascript" }
+    local filetypes = { "python", "java", "cpp", "rust", "go", "haskell", "typescript", "javascript", "vue" }
     local neocodeium = require("neocodeium")
     neocodeium.setup({
       enabled = true,

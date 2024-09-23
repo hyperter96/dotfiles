@@ -19,6 +19,10 @@ local on_attach = function(client, bufnr)
   -- Turn off semantic tokens (too slow)
   client.server_capabilities.semanticTokensProvider = nil
 
+  if client.server_capabilities.documentFoldingRangeProvider then
+    require("ufo").attach(bufnr)
+  end
+
   -- Formatting for Vue handled by Eslint
   if u.has_value({
     "eslint",
@@ -219,6 +223,26 @@ mason_tool_installer.setup({
   automatic_installation = true,
 })
 
+-- Setup for Global Diagnostics settings
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = {
+    only_current_line = true,
+  },
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = true,
+    border = "rounded",
+    header = "",
+    prefix = "",
+  },
+})
+
+require("lsp.handlers")
+
 -- Setup each server
 for _, s in pairs(servers) do
   local server_config_ok, mod = pcall(require, "lsp.servers." .. s)
@@ -242,19 +266,6 @@ require("lsp.servers.rustaceanvim").setup({
 require("lsp.servers.haskell.tools").setup({
   on_attach = on_attach,
   capabilities = lsp_zero.get_capabilities(),
-})
-
--- Global diagnostic settings
-vim.diagnostic.config({
-  virtual_text = true,
-  severity_sort = true,
-  update_in_insert = false,
-  float = {
-    header = "",
-    source = true,
-    border = "solid",
-    focusable = true,
-  },
 })
 
 require("lsp.servers.crates")
