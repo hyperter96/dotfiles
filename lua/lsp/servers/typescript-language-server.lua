@@ -39,7 +39,7 @@ return {
           {
             name = "@vue/typescript-plugin",
             location = vue_typescript_plugin,
-            languages = { "javascript", "typescript", "vue", "javascriptreact", "typescriptreact", "vue" },
+            languages = { "javascript", "typescript", "vue" },
           },
         },
       },
@@ -50,18 +50,32 @@ return {
         "typescript",
         "typescriptreact",
         "typescript.tsx",
-        "vue",
       },
       capabilities = capabilities,
       on_attach = function(client, bufnr)
         on_attach(client, bufnr)
       end,
     })
-
     lspconfig.volar.setup({
       capabilities = capabilities,
       on_attach = on_attach,
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+      init_options = {
+        vue = {
+          hybridMode = false,
+        },
+        typescript = {
+          tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+        },
+      },
+      documentFeatures = {
+        documentColor = true,
+      },
+      languageFeatures = {
+        semanticTokens = true,
+      },
       settings = {
+        completeFunctionCalls = true,
         css = {
           validate = true,
           lint = {

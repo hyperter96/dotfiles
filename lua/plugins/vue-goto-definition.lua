@@ -17,7 +17,7 @@ local opts = {
     priority = { "vue3", "nuxt" },
   },
   lsp = {
-    override_definition = false, -- override vim.lsp.buf.definition
+    override_definition = true, -- override vim.lsp.buf.definition
   },
   debounce = 200,
 }

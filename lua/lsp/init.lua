@@ -169,6 +169,7 @@ local servers = {
   "bash-language-server",
   "gopls",
   "texlab",
+  -- "vtsls",
   "typescript-language-server",
   "tailwindcss-language-server",
   "vue-language-server",
