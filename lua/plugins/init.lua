@@ -96,6 +96,7 @@ return {
   -- lsp for java, rust, haskell
   { "mfussenegger/nvim-jdtls", ft = { "java" } },
   { "mrcjkb/rustaceanvim", version = "^4", ft = { "rust" } },
+  { "pmizio/typescript-tools.nvim" },
   {
     "mrcjkb/haskell-tools.nvim",
     version = "^2",

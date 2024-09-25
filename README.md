@@ -295,6 +295,12 @@ Build nvim-oxi with cargo:
 <pre>$ bash build.sh nvim-oxi</pre>
 </details>
 
+<details>
+<summary>CopilotChat</summary>
+Install the following:
+<pre>$ luarocks install --lua-version 5.1 tiktoken_core</pre>
+</details>
+
 ### Terminal UI
 
 <details>

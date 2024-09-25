@@ -77,6 +77,9 @@ return {
 
           -- yank
           { "<leader>y", group = "Yank", icon = { icon = "", color = "green" } },
+
+          -- copilot
+          { "<leader>k", group = "Copilot", icon = { icon = "", color = "orange" } },
         },
       },
     },

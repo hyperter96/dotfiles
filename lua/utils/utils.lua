@@ -329,6 +329,21 @@ M.get_pkg_path = function(pkg, path, opts)
   return ret
 end
 
+M.root_pattern_exclude = function(opt)
+  local lsputil = require("lspconfig.util")
+
+  return function(fname)
+    local excluded_root = lsputil.root_pattern(opt.exclude)(fname)
+    local included_root = lsputil.root_pattern(opt.root)(fname)
+
+    if excluded_root then
+      return nil
+    else
+      return included_root
+    end
+  end
+end
+
 M.move_to_file_refactor = function(client, buffer)
   client.commands["_typescript.moveToFileRefactoring"] = function(command, ctx)
     ---@type string, string, lsp.Range

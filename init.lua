@@ -1,7 +1,7 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 require("plugins.dap")
-
+require("lsp.copilot")
 require("git-helpers")
 require("telescope").setup({
   pickers = {
@@ -23,5 +23,4 @@ lspconfig.clangd.setup({
     end
   end,
 })
-
 require("highlight")

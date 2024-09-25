@@ -246,3 +246,5 @@ base16
 oxi
 with
 ssl
+tiktoken
+CopilotChat

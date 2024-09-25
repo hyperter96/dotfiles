@@ -170,7 +170,7 @@ local servers = {
   "gopls",
   "texlab",
   -- "vtsls",
-  "typescript-language-server",
+  -- "typescript-language-server",
   "tailwindcss-language-server",
   "vue-language-server",
   "golangci-lint-langserver",
@@ -260,6 +260,11 @@ require("lspconfig").protobuf_language_server.setup({
 })
 
 require("lsp.servers.rustaceanvim").setup({
+  on_attach = on_attach,
+  capabilities = lsp_zero.get_capabilities(),
+})
+
+require("lsp.servers.typescript-tools").setup({
   on_attach = on_attach,
   capabilities = lsp_zero.get_capabilities(),
 })
