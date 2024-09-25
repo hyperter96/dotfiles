@@ -13,7 +13,7 @@ return {
             keymap = {
               jump_prev = "[[",
               jump_next = "]]",
-              accept = "<CR>",
+              accept = "<A-s>",
               refresh = "gr",
               open = "<c-CR>",
             },
@@ -23,7 +23,7 @@ return {
             auto_trigger = true,
             debounce = 75,
             keymap = {
-              accept = "<c-;>",
+              accept = "<A-s>",
               next = "<c-,>",
               prev = "<c-.>",
               dismiss = "<c-'>",
