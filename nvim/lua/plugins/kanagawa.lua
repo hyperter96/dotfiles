@@ -4,7 +4,7 @@ return {
   priority = 1000,
   config = function()
     -- Make background transparent. I like semi-transparent background in the terminal.
-    --   vim.cmd([[
+    -- vim.cmd([[
     --   augroup user_colors
     --     autocmd!
     --     autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE

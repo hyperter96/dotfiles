@@ -482,7 +482,7 @@ local buttons = {
     button("f", "  Find file", ":Telescope find_files<CR>", {}),
     button("h", "  Recently opened files", ":Telescope oldfiles<CR>", {}),
     button("r", "  Frecency/MRU", ":Telescope oldfiles<CR>", {}),
-    button("g", "  Open Last Session", ":source ~/.config/nvim/session.vim<CR>", {}),
+    button("SPC wr", "  Restore Session For Current Directory", "<cmd>SessionRestore<CR>", {}),
     button("m", "  Word Finder", ":Telescope live_grep<CR>", {}),
     button("l", "  Marks", ":Telescope marks<CR>", {}),
   },

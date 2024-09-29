@@ -24,6 +24,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    events = { "BufRead", "BufNewFile" },
     opts = {
       inlay_hints = {
         enabled = false,
@@ -36,6 +37,9 @@ return {
         end,
         jdtls = function()
           -- this will disable LazyVim from setting up jdtls automatically
+          return true
+        end,
+        tsserver = function()
           return true
         end,
         -- tsserver = function()
@@ -81,6 +85,7 @@ return {
   { "AndrewRadev/tagalong.vim" },
   { "tpope/vim-abolish" },
   { "djoshea/vim-autoread" },
+  { "rafcamlet/nvim-luapad" },
   { "jbyuki/one-small-step-for-vimkind" },
   { "grapp-dev/nui-components.nvim" },
   { "folke/twilight.nvim" },

@@ -8,10 +8,10 @@ return {
         python = { "isort", "black" },
         lua = { "stylua" },
         javascript = { "prettierd" },
-        javascriptreact = { "dprint" },
+        javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
-        typescriptreact = { "dprint" },
-        vue = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        vue = { "eslint_d" },
         go = { "goimports", "gofumpt" },
         less = { "prettierd" },
         toml = { "taplo" },
@@ -28,9 +28,16 @@ return {
         xml = { "xmllint" },
       },
       formatters = {
-        dprint = {
-          condition = function(_, ctx)
-            return vim.fs.find({ "dprint.json" }, { path = ctx.filename, upward = true })[1]
+        project_eslint = {
+          cwd = require("conform.util").root_file(".git"),
+          command = "pnpm",
+          -- Doesn't work because ESlint requires that non-fixable errors be reported
+          -- https://github.com/eslint/eslint/issues/5393
+          -- args = { "run", "lint:fix", "--", "--stdin", "$FILENAME" },
+          args = { "run", "lint" },
+          stdin = false,
+          condition = function(self, ctx)
+            return vim.fs.root(0, ".git") ~= "healthmatters"
           end,
         },
       },

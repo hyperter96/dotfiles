@@ -2,6 +2,10 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 1500
+    end,
     opts_extend = { "spec" },
     opts = {
       defaults = {},
@@ -49,7 +53,7 @@ return {
           { "<localleader>R", group = "Rest", icon = { icon = "󰒲", color = "blue" } },
 
           -- gpt
-          { "<localleader>g", group = "GPT", icon = { icon = "", color = "grey" } },
+          { "<leader>p", group = "GPT", icon = { icon = "🤖" } },
 
           -- Rust
           { "<leader>r", group = "Rust", icon = { icon = "󱘗", color = "red" } },
@@ -65,9 +69,6 @@ return {
 
           -- octo
           { "<leader>o", group = "octo", icon = { icon = "", color = "grey" } },
-
-          -- chatGPT
-          { "<leader>P", group = "ChatGPT", icon = { icon = "󰭹", color = "green" } },
 
           -- ziglang
           { "<leader>z", group = "Zig", icon = { icon = "", color = "orange" } },

@@ -299,6 +299,10 @@ Build nvim-oxi with cargo:
 <summary>CopilotChat</summary>
 Install the following:
 <pre>$ luarocks install --lua-version 5.1 tiktoken_core</pre>
+Be sure to have apps.json file under the path: ~/.config/github-copilot where the content is:
+<pre>
+{"github.com":{"user":"xxxx","oauth_token":"ghu_xxxxxxxxxxxxxxxxxxxxx","githubAppId":"Iv1.xxxxxxxxxxxxxxxx"}}
+</pre>
 </details>
 
 ### Terminal UI

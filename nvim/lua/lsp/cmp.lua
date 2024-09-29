@@ -1,6 +1,13 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+lspkind.init({
+  symbol_map = {
+    Copilot = "",
+  },
+})
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 local cmp_format = require("lsp-zero").cmp_format({ details = true })
 local cmp_action = require("lsp-zero").cmp_action()
 
@@ -18,10 +25,11 @@ luasnip.setup({
 cmp.setup({
   sources = {
     { name = "lazydev" },
-    { name = "nvim_lsp" },
-    { name = "luasnip" }, -- snippets
+    { name = "copilot", group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = "luasnip", group_index = 2 }, -- snippets
     { name = "buffer" }, -- text within current buffer
-    { name = "path" }, -- file system paths
+    { name = "path", group_index = 2 }, -- file system paths
   },
   snippet = {
     expand = function(args)

@@ -7,3 +7,17 @@ foo.*
 *.log
 data
 .env
+Google/
+go/
+gh/
+ghc/
+solana/
+dconf/
+google-chrome/
+gops/
+exercism/
+mimeapps.list
+nextjs-nodejs/
+pulse/
+nvim3/
+github-copilot/apps.json

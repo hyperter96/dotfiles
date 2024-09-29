@@ -19,8 +19,8 @@ return {
             },
           },
           suggestion = {
-            enabled = true,
-            auto_trigger = true,
+            enabled = false,
+            auto_trigger = false,
             debounce = 75,
             keymap = {
               accept = "<A-s>",
@@ -66,5 +66,11 @@ return {
       -- See Configuration section for rest
     },
     -- See Commands section for default commands if you want to lazy load on them
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
   },
 }
