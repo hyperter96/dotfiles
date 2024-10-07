@@ -60,6 +60,7 @@ return {
   { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
   { "onsails/lspkind-nvim" }, -- vs-code like pictograms
   { "MunifTanjim/nui.nvim" },
+  { "stevearc/dressing.nvim", opts = {} },
   { "hrsh7th/nvim-cmp", event = "InsertEnter", lazy = true },
   { "Saecki/crates.nvim", event = { "BufRead Cargo.toml" } },
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
@@ -72,7 +73,7 @@ return {
   { "hrsh7th/cmp-buffer" }, -- source for text in buffer
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/cmp-path" }, -- source for file system paths
-  { "nvim-lua/plenary.nvim" },
+  { "nvim-lua/plenary.nvim", lazy = true },
   { "lukas-reineke/lsp-format.nvim" },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
@@ -94,6 +95,9 @@ return {
   { "junegunn/fzf.vim" },
   { "sindrets/diffview.nvim" },
   { "kevinhwang91/promise-async" },
+  { "ngynkvn/gotmpl.nvim", opts = {} },
+  { "towolf/vim-helm" },
+  { "Glench/Vim-Jinja2-Syntax" },
   { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   { "m4xshen/hardtime.nvim", optional = true, opts = {} },
   { "b0o/SchemaStore.nvim", lazy = true, version = false }, -- last release is way too old
@@ -108,6 +112,7 @@ return {
     lazy = false,
     ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
   },
+  { "mustache/vim-mustache-handlebars" },
   {
     "luc-tielen/telescope_hoogle",
     lazy = true,

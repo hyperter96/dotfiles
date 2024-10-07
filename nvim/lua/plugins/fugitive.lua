@@ -20,6 +20,7 @@ return {
   init = function()
     local map_opts = { noremap = true, silent = true, nowait = true, buffer = false }
     vim.keymap.set("n", "<leader>gs", toggle_status, map_opts)
+    vim.keymap.set("n", "<leader>gD", "<cmd>Git diff<cr>", ext(map_opts, "desc", "Git diff"))
     vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit!<cr>", ext(map_opts, "desc", "Open a Three Way Split"))
   end,
 }

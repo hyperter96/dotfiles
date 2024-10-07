@@ -2,9 +2,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufRead", "BufNewFile" }, -- 当读取文件或创建新文件时加载
-    opts = function(_, opts)
-      opts.ensure_installed = {}
-      vim.list_extend(opts.ensure_installed, {
+    opts = {
+      ensure_installed = {
         "bibtex",
         "cmake",
         "cpp",
@@ -56,8 +55,12 @@ return {
         "typescript",
         "haskell",
         "java",
-      })
-    end,
+      },
+      highlight = {
+        enable = true, -- 启用高亮
+        additional_vim_regex_highlighting = false,
+      },
+    },
   },
   {
     "davidmh/mdx.nvim",

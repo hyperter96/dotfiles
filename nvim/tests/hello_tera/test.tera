@@ -1,0 +1,60 @@
+// {{ file_name }}.ts
+
+import { ref{{#if has_computed}}, computed{{/if}}{{#if has_watch}}, watch{{/if}}{{#if has_lifecycle}}, onMounted{{/if}} } from 'vue';
+
+{% if has_types %}
+// 定义类型
+interface {{ interface_name }} {
+{% for type_def in type_definitions %}
+  {{ type_def.name }}: {{ type_def.type }};
+{% endfor %}
+}
+{% endif %}
+
+/**
+ * {{ function_name }} - {{ description }}
+ */
+export function {{ function_name }}({{ function_params }}) {
+  // 1. 定义响应式状态
+  {% for state in states %}
+  const {{ state.name }} = ref<{{ state.type }}>({{ state.initial_value }});
+  {% endfor %}
+
+  {% if has_computed %}
+  // 2. 定义计算属性
+  {% for computed_prop in computed %}
+  const {{ computed_prop.name }} = computed(() => {{ computed_prop.compute_function }});
+  {% endfor %}
+  {% endif %}
+
+  // 3. 定义方法
+  {% for method in methods %}
+  function {{ method.name }}({{ method.params }}): {{ method.return_type }} {
+    {{ method.body }}
+  }
+  {% endfor %}
+
+  {% if has_lifecycle %}
+  // 4. 生命周期钩子
+  onMounted(() => {
+    {{ lifecycle_hook_body }}
+  });
+  {% endif %}
+
+  {% if has_watch %}
+  // 5. 监视器
+  {% for watch in watches %}
+  watch({{ watch.source }}, (newVal, oldVal) => {
+    {{ watch.handler }}
+  });
+  {% endfor %}
+  {% endif %}
+
+  // 6. 返回需要暴露的状态和方法
+  return {
+    {% for return_value in return_values %}
+    {{ return_value }},
+    {% endfor %}
+  };
+}
+

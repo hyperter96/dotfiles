@@ -33,6 +33,26 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlights the yanked text",
 })
 
+-- 文件类型检测配置
+vim.api.nvim_exec2(
+  [[
+  augroup FileTypeMustache
+    autocmd!
+    autocmd BufNewFile,BufRead *.mustache set filetype=mustache
+    autocmd BufNewFile,BufRead *.hbs set filetype=mustache
+  augroup END
+
+  augroup FileTypeGoTemplate
+    autocmd!
+    autocmd BufNewFile,BufRead *.tmpl set filetype=gotmpl
+    autocmd BufNewFile,BufRead *.gohtml set filetype=gotmpl
+  augroup END
+]],
+  { output = false }
+)
+vim.g.handlebars_no_default_keybindings = 1
+vim.g.mustache_abbreviations = 1
+
 -- Taken from: https://stackoverflow.com/questions/4292733/vim-creating-parent-directories-on-save
 vim.cmd([[
   function s:MkNonExDir(file, buf)

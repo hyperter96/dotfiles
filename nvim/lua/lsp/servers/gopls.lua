@@ -1,7 +1,7 @@
 return {
   setup = function(on_attach, capabilities)
     require("lspconfig").gopls.setup({
-      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      filetypes = { "go", "gomod", "gowork" },
       capabilities = capabilities,
       on_attach = function(client, bufnr) -- on_attach for gopls
         on_attach(client, bufnr)

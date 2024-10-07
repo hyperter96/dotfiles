@@ -180,6 +180,7 @@ local servers = {
   "clangd",
   "protolint",
   "zls",
+  "jinja-lsp",
   "taplo",
   "json-lsp",
   "jdtls",
