@@ -36,6 +36,7 @@
   "fzf.vim": { "branch": "master", "commit": "c5ce7908ee86af7d4090d2007086444afb6ec1c9" },
   "garbage-day.nvim": { "branch": "main", "commit": "750ef08ae6031ee3683014c5349144340c08ead6" },
   "gen.nvim": { "branch": "main", "commit": "2ee646f6374894bf065fbc28d38cb391bc51d79b" },
+  "git-blame.nvim": { "branch": "master", "commit": "2883a7460f611c2705b23f12d58d398d5ce6ec00" },
   "git-conflict.nvim": { "branch": "main", "commit": "bfd9fe6fba9a161fc199771d85996236a0d0faad" },
   "gitsigns.nvim": { "branch": "main", "commit": "863903631e676b33e8be2acb17512fdc1b80b4fb" },
   "glyph-palette.vim": { "branch": "master", "commit": "acc67da9640ff4eb22bae1c0a740b648d5441a89" },

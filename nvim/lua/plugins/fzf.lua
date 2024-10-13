@@ -48,22 +48,6 @@ return {
       { "<leader>sm", "<cmd>FzfLua marks<cr>", desc = "Jump to Mark" },
       { "<leader>sR", "<cmd>FzfLua resume<cr>", desc = "Resume" },
       { "<leader>sq", "<cmd>FzfLua quickfix<cr>", desc = "Quickfix List" },
-      { "<leader>sw", LazyVim.pick("grep_cword"), desc = "Word (Root Dir)" },
-      { "<leader>sW", LazyVim.pick("grep_cword", { root = false }), desc = "Word (cwd)" },
-      { "<leader>sw", LazyVim.pick("grep_visual"), mode = "v", desc = "Selection (Root Dir)" },
-      { "<leader>sW", LazyVim.pick("grep_visual", { root = false }), mode = "v", desc = "Selection (cwd)" },
-      {
-        "<leader>sp",
-        function()
-          local dirs = { "~/dot/nvim/lua/plugins", "~/projects/LazyVim/lua/lazyvim/plugins" }
-          require("fzf-lua").live_grep({
-            filespec = "-- " .. table.concat(vim.tbl_values(dirs), " "),
-            search = "/",
-            formatter = "path.filename_first",
-          })
-        end,
-        desc = "Find Lazy Plugin Spec",
-      },
       {
         "<leader>ss",
         function()
