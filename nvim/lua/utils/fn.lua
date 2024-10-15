@@ -148,6 +148,15 @@ function M.kmap(tbl, func)
   end, {})
 end
 
+function M.keymapOptions(desc)
+  return {
+    noremap = true,
+    silent = true,
+    nowait = true,
+    desc = "GPT prompt " .. desc,
+  }
+end
+
 function M.imap(tbl, func)
   return M.ireduce(tbl, function(new_tbl, value, index)
     table.insert(new_tbl, func(value, index))

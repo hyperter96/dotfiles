@@ -11,6 +11,7 @@ opt.conceallevel = 0
 opt.relativenumber = false
 vim.g.maplocalleader = ","
 vim.g.mapleader = " "
+vim.opt.clipboard = "unnamedplus"
 
 if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font:h11"
