@@ -57,6 +57,7 @@ return {
     end,
   },
   { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  { "mg979/vim-visual-multi", branch = "master" },
   { "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
   { "onsails/lspkind-nvim" }, -- vs-code like pictograms
   { "MunifTanjim/nui.nvim" },
