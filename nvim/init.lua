@@ -19,3 +19,6 @@ require("highlight")
 
 -- Setup LSP custom configurations
 require("lsp.custom")
+
+-- Setup Jupiter Notebook
+require("lsp.jupiter-notebook")

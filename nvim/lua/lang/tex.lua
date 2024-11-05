@@ -10,7 +10,6 @@ return {
       { "<localLeader>l", "", desc = "+vimtext" },
     },
   },
-  { "xuhdev/vim-latex-live-preview" },
   {
     "micangl/cmp-vimtex",
     config = function()
