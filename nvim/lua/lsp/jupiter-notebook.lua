@@ -1,6 +1,6 @@
 vim.keymap.set("n", "<leader>Me", ":MoltenEvaluateOperator<CR>", { desc = "evaluate operator", silent = true })
 vim.keymap.set("n", "<leader>Ms", ":noautocmd MoltenEnterOutput<CR>", { desc = "open output window", silent = true })
-
+vim.keymap.set("n", "<leader>Ml", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
 vim.keymap.set("n", "<leader>Mr", ":MoltenReevaluateCell<CR>", { desc = "re-eval cell", silent = true })
 vim.keymap.set(
   "v",
@@ -13,6 +13,16 @@ vim.keymap.set("n", "<leader>Mx", ":MoltenDelete<CR>", { desc = "delete Molten c
 
 -- if you work with html outputs:
 vim.keymap.set("n", "<leader>MB", ":MoltenOpenInBrowser<CR>", { desc = "open output in browser", silent = true })
+vim.keymap.set("n", "<leader>Mi", function()
+  local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+  if venv ~= nil then
+    -- in the form of /home/benlubas/.virtualenvs/VENV_NAME
+    venv = string.match(venv, "/.+/(.+)")
+    vim.cmd(("MoltenInit %s"):format(venv))
+  else
+    vim.cmd("MoltenInit python3")
+  end
+end, { desc = "Initialize Molten for python3", silent = true })
 
 local quarto = require("quarto")
 quarto.setup({
