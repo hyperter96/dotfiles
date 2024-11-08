@@ -80,6 +80,7 @@ return {
   { "tpope/vim-surround" },
   { "tpope/vim-rhubarb" },
   { "tpope/vim-eunuch" },
+  { "nvimtools/hydra.nvim" },
   { "b0o/incline.nvim", event = "VeryLazy" },
   { "romainl/vim-cool" },
   { "nvim-tree/nvim-web-devicons" },

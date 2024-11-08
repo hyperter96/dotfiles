@@ -248,3 +248,7 @@ with
 ssl
 tiktoken
 CopilotChat
+Zig's
+GC
+i32
+zig

@@ -81,6 +81,9 @@ return {
 
           -- copilot
           { "<leader>k", group = "Copilot", icon = { icon = "", color = "orange" } },
+
+          -- Jupiter Notebook
+          { "<leader>M", group = "Jupiter Notebook", icon = { icon = "󰠮", color = "blue" } },
         },
       },
     },
