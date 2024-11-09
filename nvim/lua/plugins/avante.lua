@@ -1,14 +1,13 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  optional = true,
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- add any opts here
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make BUILD_FROM_SOURCE=true",
+  build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
@@ -44,22 +43,4 @@ return {
       ft = { "markdown", "Avante" },
     },
   },
-  config = function()
-    require("avante").setup({
-      -- Your config here!
-      provider = "copilot",
-      behaviour = {
-        support_paste_from_clipboard = false,
-      },
-      mappings = {
-        diff = {
-          ours = "<leader>co",
-          theirs = "<leader>ct",
-          all_theirs = "<leader>ca",
-          both = "<leader>cb",
-          cursor = "<leader>cc",
-        },
-      },
-    })
-  end,
 }

@@ -31,7 +31,7 @@ return {
       port = "${port}",
       executable = {
         -- 根据实际情况填写 codelldb 的路径
-        command = vim.fn.stdpath("data") .. "/mason/bin/codelldb/extension/adapter/codelldb",
+        command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/extension/adapter/codelldb",
         args = { "--port", "${port}" },
       },
     }
