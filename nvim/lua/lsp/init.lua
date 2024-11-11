@@ -228,7 +228,7 @@ mason_tool_installer.setup({
 -- Setup for Global Diagnostics settings
 
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   virtual_lines = {
     only_current_line = true,
   },

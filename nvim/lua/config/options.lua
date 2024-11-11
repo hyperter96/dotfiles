@@ -11,7 +11,8 @@ opt.conceallevel = 0
 opt.relativenumber = false
 vim.g.maplocalleader = ","
 vim.g.mapleader = " "
-vim.opt.clipboard = "unnamedplus"
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 
 if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font:h11"
