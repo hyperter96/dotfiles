@@ -96,6 +96,6 @@ return {
     templ = templ,
   },
   keys = {
-    m("<leader>i", [[lua require("ts-node-action").node_action()]]),
+    m("<leader>na", [[lua require("ts-node-action").node_action()]], "n"),
   },
 }

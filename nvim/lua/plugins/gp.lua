@@ -47,27 +47,28 @@ return {
     vim.keymap.set("v", "<leader>pr", ":<C-u>'<,'>GpRewrite<cr>", { desc = "Visual Write" })
 
     -- optional Whisper commands with prefix <C-g>w
-    vim.keymap.set({ "n", "i" }, "<C-g>ww", "<cmd>GpWhisper<cr>", kmOpts("Whisper"))
-    vim.keymap.set("v", "<C-g>ww", ":<C-u>'<,'>GpWhisper<cr>", kmOpts("Visual Whisper"))
 
-    vim.keymap.set({ "n", "i" }, "<C-g>wr", "<cmd>GpWhisperRewrite<cr>", kmOpts("Whisper Inline Rewrite"))
-    vim.keymap.set({ "n", "i" }, "<C-g>wa", "<cmd>GpWhisperAppend<cr>", kmOpts("Whisper Append (after)"))
-    vim.keymap.set({ "n", "i" }, "<C-g>wb", "<cmd>GpWhisperPrepend<cr>", kmOpts("Whisper Prepend (before) "))
+    vim.keymap.set({ "n", "i" }, "<leader>pw", "<cmd>GpWhisper<cr>", kmOpts("Whisper"))
+    vim.keymap.set("v", "<leader>pw", ":<C-u>'<,'>GpWhisper<cr>", kmOpts("Visual Whisper"))
 
-    vim.keymap.set("v", "<C-g>wr", ":<C-u>'<,'>GpWhisperRewrite<cr>", kmOpts("Visual Whisper Rewrite"))
-    vim.keymap.set("v", "<C-g>wa", ":<C-u>'<,'>GpWhisperAppend<cr>", kmOpts("Visual Whisper Append (after)"))
-    vim.keymap.set("v", "<C-g>wb", ":<C-u>'<,'>GpWhisperPrepend<cr>", kmOpts("Visual Whisper Prepend (before)"))
+    vim.keymap.set({ "n", "i" }, "<leader>pR", "<cmd>GpWhisperRewrite<cr>", kmOpts("Whisper Inline Rewrite"))
+    vim.keymap.set({ "n", "i" }, "<leader>pa", "<cmd>GpWhisperAppend<cr>", kmOpts("Whisper Append (after)"))
+    vim.keymap.set({ "n", "i" }, "<leader>pP", "<cmd>GpWhisperPrepend<cr>", kmOpts("Whisper Prepend (before) "))
 
-    vim.keymap.set({ "n", "i" }, "<C-g>wp", "<cmd>GpWhisperPopup<cr>", kmOpts("Whisper Popup"))
-    vim.keymap.set({ "n", "i" }, "<C-g>we", "<cmd>GpWhisperEnew<cr>", kmOpts("Whisper Enew"))
-    vim.keymap.set({ "n", "i" }, "<C-g>wn", "<cmd>GpWhisperNew<cr>", kmOpts("Whisper New"))
-    vim.keymap.set({ "n", "i" }, "<C-g>wv", "<cmd>GpWhisperVnew<cr>", kmOpts("Whisper Vnew"))
-    vim.keymap.set({ "n", "i" }, "<C-g>wt", "<cmd>GpWhisperTabnew<cr>", kmOpts("Whisper Tabnew"))
+    vim.keymap.set("v", "<leader>pR", ":<C-u>'<,'>GpWhisperRewrite<cr>", kmOpts("Visual Whisper Rewrite"))
+    vim.keymap.set("v", "<leader>pa", ":<C-u>'<,'>GpWhisperAppend<cr>", kmOpts("Visual Whisper Append (after)"))
+    vim.keymap.set("v", "<leader>pP", ":<C-u>'<,'>GpWhisperPrepend<cr>", kmOpts("Visual Whisper Prepend (before)"))
 
-    vim.keymap.set("v", "<C-g>wp", ":<C-u>'<,'>GpWhisperPopup<cr>", kmOpts("Visual Whisper Popup"))
-    vim.keymap.set("v", "<C-g>we", ":<C-u>'<,'>GpWhisperEnew<cr>", kmOpts("Visual Whisper Enew"))
-    vim.keymap.set("v", "<C-g>wn", ":<C-u>'<,'>GpWhisperNew<cr>", kmOpts("Visual Whisper New"))
-    vim.keymap.set("v", "<C-g>wv", ":<C-u>'<,'>GpWhisperVnew<cr>", kmOpts("Visual Whisper Vnew"))
-    vim.keymap.set("v", "<C-g>wt", ":<C-u>'<,'>GpWhisperTabnew<cr>", kmOpts("Visual Whisper Tabnew"))
+    vim.keymap.set({ "n", "i" }, "<leader>pu", "<cmd>GpWhisperPopup<cr>", kmOpts("Whisper Popup"))
+    vim.keymap.set({ "n", "i" }, "<leader>pe", "<cmd>GpWhisperEnew<cr>", kmOpts("Whisper Enew"))
+    vim.keymap.set({ "n", "i" }, "<leader>pn", "<cmd>GpWhisperNew<cr>", kmOpts("Whisper New"))
+    vim.keymap.set({ "n", "i" }, "<leader>pv", "<cmd>GpWhisperVnew<cr>", kmOpts("Whisper Vnew"))
+    vim.keymap.set({ "n", "i" }, "<leader>pb", "<cmd>GpWhisperTabnew<cr>", kmOpts("Whisper Tabnew"))
+
+    vim.keymap.set("v", "<leader>pu", ":<C-u>'<,'>GpWhisperPopup<cr>", kmOpts("Visual Whisper Popup"))
+    vim.keymap.set("v", "<leader>pe", ":<C-u>'<,'>GpWhisperEnew<cr>", kmOpts("Visual Whisper Enew"))
+    vim.keymap.set("v", "<leader>pn", ":<C-u>'<,'>GpWhisperNew<cr>", kmOpts("Visual Whisper New"))
+    vim.keymap.set("v", "<leader>pv", ":<C-u>'<,'>GpWhisperVnew<cr>", kmOpts("Visual Whisper Vnew"))
+    vim.keymap.set("v", "<leader>pb", ":<C-u>'<,'>GpWhisperTabnew<cr>", kmOpts("Visual Whisper Tabnew"))
   end,
 }
