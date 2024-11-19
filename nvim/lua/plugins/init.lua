@@ -25,6 +25,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     events = { "BufRead", "BufNewFile" },
+    init_options = {
+      userLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        rust = "html",
+      },
+    },
     opts = {
       inlay_hints = {
         enabled = false,
