@@ -59,7 +59,7 @@ return {
           { "<leader>r", group = "Rust", icon = { icon = "󱘗", color = "red" } },
 
           -- Refactoring
-          { "<leader>R", group = "Refactoring", icon = { icon = "", color = "orange" } },
+          { "<leader>F", group = "Refactoring", icon = { icon = "", color = "orange" } },
 
           -- Rust Crates.io
           { "<leader>C", group = "Crates", icon = { icon = "󱘗", color = "red" } },
