@@ -55,6 +55,7 @@ return {
         "typescript",
         "haskell",
         "java",
+        "thrift",
       },
       highlight = {
         enable = true, -- 启用高亮

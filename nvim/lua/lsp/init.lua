@@ -184,6 +184,7 @@ local servers = {
   "taplo",
   "json-lsp",
   "jdtls",
+  "thriftls",
   "yaml-language-server",
 }
 
