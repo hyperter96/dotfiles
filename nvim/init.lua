@@ -5,15 +5,6 @@ require("lsp.copilot")
 require("git-helpers")
 -- require("avante_lib").load()
 
--- Setup Telescope
-require("telescope").setup({
-  pickers = {
-    colorscheme = {
-      enable_preview = true,
-    },
-  },
-})
-
 -- Load highlight configurations
 require("highlight")
 

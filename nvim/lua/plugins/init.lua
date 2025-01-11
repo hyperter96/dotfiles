@@ -69,7 +69,7 @@ return {
   { "onsails/lspkind-nvim" }, -- vs-code like pictograms
   { "MunifTanjim/nui.nvim" },
   { "stevearc/dressing.nvim", opts = {} },
-  { "hrsh7th/nvim-cmp", event = "InsertEnter", lazy = true },
+  { "hrsh7th/nvim-cmp", version = false, event = "InsertEnter", lazy = true },
   { "Saecki/crates.nvim", event = { "BufRead Cargo.toml" } },
   { "hrsh7th/cmp-nvim-lsp-signature-help" },
   { "hrsh7th/cmp-nvim-lua", ft = { "lua" } },

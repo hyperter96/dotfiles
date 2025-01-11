@@ -5,7 +5,7 @@ opt.guifont = "Hack Nerd Font:h11"
 opt.spelllang = { "en", "es", "cjk" }
 opt.spell = false
 opt.wrap = true
-
+vim.g.lazyvim_cmp = "nvim-cmp"
 -- conceal level
 opt.conceallevel = 0
 opt.relativenumber = false

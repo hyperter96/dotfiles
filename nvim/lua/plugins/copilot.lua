@@ -67,10 +67,4 @@ return {
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
 }
