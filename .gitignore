@@ -24,3 +24,4 @@ github-copilot/apps.json
 fermyon/config.json
 turborepo/telemetry.json
 nvim/lazy-lock.json
+nvim/.env

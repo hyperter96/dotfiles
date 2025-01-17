@@ -173,7 +173,7 @@ local servers = {
   -- "typescript-language-server",
   "tailwindcss-language-server",
   "vue-language-server",
-  "golangci-lint-langserver",
+  -- "golangci-lint-langserver",
   "ltex-ls",
   "python-lsp-server",
   "css-lsp",
