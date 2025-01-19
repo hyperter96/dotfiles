@@ -3,8 +3,8 @@ local wezterm = require("wezterm")
 -- this will hold the config
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("Hack Nerd Font")
-
+config.font = wezterm.font_with_fallback({ "Hack Nerd Font", "Noto Sans CJK SC", "Sarasa Mono SC" })
+config.warn_about_missing_glyphs = false
 config.colors = {
 	foreground = "#CBE0F0",
 	background = "#011423",
