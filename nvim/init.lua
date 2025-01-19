@@ -1,15 +1,12 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
-require("plugins.dap")
-require("lsp.copilot")
-require("git-helpers")
--- require("avante_lib").load()
+-- Core plugin management
+require("config.lazy") -- Lazy.nvim plugin manager
+require("git-helpers") -- Git related utilities
 
--- Load highlight configurations
-require("highlight")
+-- Debugging and LSP configurations
+require("plugins.dap") -- Debug Adapter Protocol
+require("lsp.copilot") -- GitHub Copilot integration
+require("lsp.custom") -- Custom LSP configurations
+require("lsp.jupiter-notebook") -- Jupyter notebook support
 
--- Setup LSP custom configurations
-require("lsp.custom")
-
--- Setup Jupiter Notebook
-require("lsp.jupiter-notebook")
+-- UI and highlighting
+require("highlight") -- Syntax highlighting configurations

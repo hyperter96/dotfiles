@@ -69,3 +69,27 @@ vim.g.molten_virt_text_output = true
 
 -- this will make it so the output shows up below the \`\`\` cell delimiter
 vim.g.molten_virt_lines_off_by_1 = true
+
+local function load_env_file(path)
+  local file = io.open(path, "r")
+  if not file then
+    return
+  end
+
+  for line in file:lines() do
+    local key, value = line:match("^(.-)=(.*)$")
+    if key and value then
+      vim.fn.setenv(key, value)
+    end
+  end
+  file:close()
+end
+
+-- 加载 .env 文件
+load_env_file(vim.fn.expand("~/.config/nvim/.env"))
+
+-- 检查 OPENAI_API_KEY 是否加载成功
+local openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key == nil then
+  print("OPENAI_API_KEY is not set!")
+end
