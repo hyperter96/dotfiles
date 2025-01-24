@@ -1,8 +1,9 @@
+-- Core LSP Setup
 local lsp_zero = require("lsp-zero")
 local lsp_format_ok, lsp_format = pcall(require, "lsp-format")
 local u = require("functions.utils")
--- This is the callback function that runs after LSP attaches which configures the LSP,
--- which sets the LSP settings like formatting and keymaps, etc.
+
+-- LSP Attachment Configuration
 local on_attach = function(client, bufnr)
   local function buf_set_option(name, value)
     vim.api.nvim_set_option_value(name, value, { buf = bufnr })
@@ -42,7 +43,7 @@ local on_attach = function(client, bufnr)
   end
 end
 
--- extend ufo with lsp_zero
+-- LSP Capabilities with UFO folding support
 local lsp_capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
   textDocument = {
     foldingRange = {
@@ -52,6 +53,7 @@ local lsp_capabilities = vim.tbl_deep_extend("force", require("cmp_nvim_lsp").de
   },
 })
 
+-- Configure LSP Zero
 lsp_zero.extend_lspconfig({
   sign_text = true,
   lsp_attach = on_attach,
@@ -227,7 +229,6 @@ mason_tool_installer.setup({
 })
 
 -- Setup for Global Diagnostics settings
-
 vim.diagnostic.config({
   virtual_text = true,
   virtual_lines = {
