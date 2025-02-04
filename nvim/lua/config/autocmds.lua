@@ -1,3 +1,20 @@
+vim.api.nvim_create_user_command("AvanteProject", function()
+  require("avante.api").ask({
+    question = [[
+    分析当前项目的以下目录(假如存在以下目录的话)：
+    - app/
+    - apps/
+    - src/
+    - include/
+    - lib/
+    请完成：
+    1. 总结模块架构
+    2. 找出潜在的性能瓶颈
+    3. 生成改进建议
+  ]],
+  })
+end, { desc = "Analyze Project" })
+
 -- python
 vim.api.nvim_create_autocmd("FileType", {
   desc = "python ft mappings",

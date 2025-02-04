@@ -88,8 +88,8 @@ end
 -- 加载 .env 文件
 load_env_file(vim.fn.expand("~/.config/nvim/.env"))
 
--- 检查 OPENAI_API_KEY 是否加载成功
-local openai_api_key = os.getenv("OPENAI_API_KEY")
-if openai_api_key == nil then
-  print("OPENAI_API_KEY is not set!")
+-- 检查 DEEPSEEK_API_KEY 是否加载成功
+local deepseek_api_key = os.getenv("DEEPSEEK_API_KEY")
+if deepseek_api_key == nil then
+  print("DEEPSEEK_API_KEY is not set!")
 end
